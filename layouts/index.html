@@ -1,0 +1,164 @@
+{{ define "main" }}
+<main class="home">
+  <!-- Hero Section -->
+  <section class="hero container">
+    <h1 class="hero__title">VPN, который работает, когда другие <span>заблокированы</span></h1>
+    <p class="hero__subtitle">Доступ к Instagram, YouTube 4K и Steam. Одна подписка на 5 устройств</p>
+    <a href="{{ .Site.Params.botUrl }}?start=web_home" class="btn btn--accent btn--large">
+      Подключить через Telegram
+    </a>
+  </section>
+
+  <!-- Devices Section -->
+  <section class="section container" id="devices">
+    <h2 class="section-title">Устройства</h2>
+    <div class="grid grid--3">
+      <a href="{{ "devices/iphone/" | relURL }}" class="card">
+        <span class="card__icon">📱</span>
+        <h3 class="card__title">iPhone</h3>
+      </a>
+      <a href="{{ "devices/android/" | relURL }}" class="card">
+        <span class="card__icon">🤖</span>
+        <h3 class="card__title">Android</h3>
+      </a>
+      <a href="{{ "devices/windows/" | relURL }}" class="card">
+        <span class="card__icon">💻</span>
+        <h3 class="card__title">Windows</h3>
+      </a>
+      <a href="{{ "devices/macos/" | relURL }}" class="card">
+        <span class="card__icon">🍎</span>
+        <h3 class="card__title">macOS</h3>
+      </a>
+      <a href="{{ "devices/android-tv/" | relURL }}" class="card">
+        <span class="card__icon">📺</span>
+        <h3 class="card__title">Android TV</h3>
+      </a>
+      <a href="{{ "devices/apple-tv/" | relURL }}" class="card">
+        <span class="card__icon">🍏</span>
+        <h3 class="card__title">Apple TV</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- Locations Section -->
+  <section class="section container" id="locations">
+    <h2 class="section-title">Локации</h2>
+    <div class="grid grid--3">
+      <a href="{{ "locations/turkey/" | relURL }}" class="card">
+        <span class="card__icon">🇹🇷</span>
+        <h3 class="card__title">Турция</h3>
+      </a>
+      <a href="{{ "locations/kazakhstan/" | relURL }}" class="card">
+        <span class="card__icon">🇰🇿</span>
+        <h3 class="card__title">Казахстан</h3>
+      </a>
+      <a href="{{ "locations/argentina/" | relURL }}" class="card">
+        <span class="card__icon">🇦🇷</span>
+        <h3 class="card__title">Аргентина</h3>
+      </a>
+      <a href="{{ "locations/usa/" | relURL }}" class="card">
+        <span class="card__icon">🇺🇸</span>
+        <h3 class="card__title">США</h3>
+      </a>
+      <a href="{{ "locations/germany/" | relURL }}" class="card">
+        <span class="card__icon">🇩🇪</span>
+        <h3 class="card__title">Германия</h3>
+      </a>
+      <a href="{{ "locations/netherlands/" | relURL }}" class="card">
+        <span class="card__icon">🇳🇱</span>
+        <h3 class="card__title">Нидерланды</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section class="section container" id="solutions">
+    <h2 class="section-title">Решения</h2>
+    <div class="grid grid--4">
+      <a href="{{ "solutions/instagram/" | relURL }}" class="card">
+        <span class="card__icon">📸</span>
+        <h3 class="card__title">Instagram</h3>
+      </a>
+      <a href="{{ "solutions/youtube/" | relURL }}" class="card">
+        <span class="card__icon">▶️</span>
+        <h3 class="card__title">YouTube</h3>
+      </a>
+      <a href="{{ "solutions/steam/" | relURL }}" class="card">
+        <span class="card__icon">🎮</span>
+        <h3 class="card__title">Steam</h3>
+      </a>
+      <a href="{{ "solutions/ps-store/" | relURL }}" class="card">
+        <span class="card__icon">🎯</span>
+        <h3 class="card__title">PS Store</h3>
+      </a>
+      <a href="{{ "solutions/canva/" | relURL }}" class="card">
+        <span class="card__icon">🎨</span>
+        <h3 class="card__title">Canva</h3>
+      </a>
+      <a href="{{ "solutions/adobe/" | relURL }}" class="card">
+        <span class="card__icon">🖌️</span>
+        <h3 class="card__title">Adobe</h3>
+      </a>
+      <a href="{{ "solutions/midjourney/" | relURL }}" class="card">
+        <span class="card__icon">🤖</span>
+        <h3 class="card__title">Midjourney</h3>
+      </a>
+      <a href="{{ "solutions/ai/" | relURL }}" class="card">
+        <span class="card__icon">🧠</span>
+        <h3 class="card__title">AI (ChatGPT/Claude)</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section container" id="pricing">
+    <h2 class="section-title">Тарифы</h2>
+    <div class="pricing__grid">
+      {{ range .Site.Data.pricing.plans }}
+      <div class="pricing-card {{ if .popular }}pricing-card--popular{{ end }}">
+        {{ if .popular }}<span class="pricing-card__badge">🔥 ХИТ</span>{{ end }}
+        <h3 class="pricing-card__duration">{{ .duration }}</h3>
+        <p class="pricing-card__price">{{ .price }} <span>₽</span></p>
+        {{ if .discount }}<span class="pricing-card__discount">{{ .discount }}</span>{{ end }}
+        <a href="{{ $.Site.Params.botUrl }}?start=web_pricing" class="btn btn--accent">Купить</a>
+      </div>
+      {{ end }}
+    </div>
+    <p class="pricing__note">Принимаем карты РФ и Крипту в боте</p>
+  </section>
+
+  <!-- Technology Section -->
+  <section class="section container" id="tech">
+    <h2 class="section-title">Технологии</h2>
+    <div class="tech-features">
+      <div class="tech-feature">
+        <span class="tech-feature__icon">🛡️</span>
+        <h3 class="tech-feature__title">Современные протоколы</h3>
+        <p class="tech-feature__text">Невидимы для блокировок</p>
+      </div>
+      <div class="tech-feature">
+        <span class="tech-feature__icon">🔄</span>
+        <h3 class="tech-feature__title">Авто-обновление</h3>
+        <p class="tech-feature__text">Подписка обновляется автоматически</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section container" id="faq">
+    <h2 class="section-title">Частые вопросы</h2>
+    <div class="faq">
+      {{ range .Site.Data.faq.items }}
+      <div class="faq__item">
+        <button class="faq__question" type="button">
+          {{ .question }}
+        </button>
+        <div class="faq__answer">
+          <p>{{ .answer }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+</main>
+{{ end }}

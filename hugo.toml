@@ -1,0 +1,18 @@
+baseURL = "https://pipun.vpn/"
+languageCode = "ru"
+title = "Pipun VPN"
+
+[params]
+  botUrl = "https://t.me/pipun_bot"
+  supportUrl = "https://t.me/pipunhelper"
+  description = "VPN, который работает, когда другие заблокированы"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[build]
+  writeStats = true
+
+[module]
+  [module.hugoVersion]
+    extended = true

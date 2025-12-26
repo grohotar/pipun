@@ -1,0 +1,21 @@
+plans:
+  - duration: "1 Неделя"
+    price: 149
+    discount: null
+    popular: false
+  - duration: "1 Месяц"
+    price: 289
+    discount: null
+    popular: true
+  - duration: "3 Месяца"
+    price: 789
+    discount: "-10%"
+    popular: false
+  - duration: "6 Месяцев"
+    price: 1489
+    discount: "-15%"
+    popular: false
+  - duration: "12 Месяцев"
+    price: 2689
+    discount: "-25%"
+    popular: false

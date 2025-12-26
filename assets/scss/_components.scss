@@ -1,0 +1,264 @@
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-lg;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: $border-radius-full;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  
+  &--accent {
+    background: $gradient-accent;
+    color: $color-text;
+    box-shadow: $shadow-glow;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba($color-accent, 0.5);
+      color: $color-text;
+    }
+  }
+  
+  &--outline {
+    border: 2px solid $color-accent;
+    color: $color-accent;
+    background: transparent;
+    
+    &:hover {
+      background: rgba($color-accent, 0.1);
+    }
+  }
+  
+  &--large {
+    padding: $spacing-md $spacing-2xl;
+    font-size: 1.125rem;
+  }
+  
+  &--full {
+    width: 100%;
+  }
+}
+
+// Cards (Glassmorphism)
+.card {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  border-radius: $border-radius;
+  padding: $spacing-lg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: rgba($color-accent, 0.5);
+    box-shadow: 0 0 25px rgba($color-accent, 0.3);
+  }
+  
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: $spacing-md;
+    display: block;
+  }
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__text {
+    font-size: 0.875rem;
+    color: $color-text-muted;
+  }
+}
+
+// Pricing Card
+.pricing-card {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  border-radius: $border-radius;
+  padding: $spacing-xl;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    border-color: rgba($color-accent, 0.5);
+    box-shadow: 0 0 25px rgba($color-accent, 0.3);
+  }
+  
+  &--popular {
+    border-color: $color-accent;
+    box-shadow: $shadow-glow;
+  }
+  
+  &__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $gradient-accent;
+    color: $color-text;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius-full;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  
+  &__duration {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+  }
+  
+  &__price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: $spacing-sm;
+    
+    span {
+      font-size: 1rem;
+      color: $color-text-muted;
+    }
+  }
+  
+  &__discount {
+    display: inline-block;
+    background: rgba($color-success, 0.2);
+    color: $color-success;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+  }
+  
+  .btn {
+    margin-top: auto;
+  }
+}
+
+// FAQ Accordion
+.faq {
+  &__item {
+    border-bottom: 1px solid $color-border;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  &__question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-lg 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $color-text;
+    text-align: left;
+    cursor: pointer;
+    
+    &::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: $color-accent;
+      transition: transform 0.3s ease;
+    }
+    
+    &.active::after {
+      transform: rotate(45deg);
+    }
+  }
+  
+  &__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    
+    &.active {
+      max-height: 500px;
+      padding-bottom: $spacing-lg;
+    }
+    
+    p {
+      color: $color-text-muted;
+      line-height: 1.7;
+    }
+  }
+}
+
+// Steps / Instructions
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: $gradient-accent;
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  
+  &__text {
+    padding-top: $spacing-sm;
+    color: $color-text;
+    
+    strong {
+      color: $color-accent;
+    }
+  }
+}
+
+
+// Technology Features
+.tech-features {
+  display: grid;
+  gap: $spacing-lg;
+  grid-template-columns: 1fr;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tech-feature {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  border-radius: $border-radius;
+  padding: $spacing-xl;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  text-align: center;
+  
+  &__icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: $spacing-md;
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__text {
+    color: $color-text-muted;
+  }
+}

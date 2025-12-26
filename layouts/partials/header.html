@@ -1,0 +1,24 @@
+<header class="header">
+  <nav class="header__nav container">
+    <a href="{{ "/" | relURL }}" class="header__logo">
+      <span class="header__logo-icon">🛡️</span>
+      <span class="header__logo-text">Pipun VPN</span>
+    </a>
+    
+    <div class="header__menu" id="mobile-menu">
+      <a href="{{ "/#devices" | relURL }}" class="header__link">Устройства</a>
+      <a href="{{ "/#locations" | relURL }}" class="header__link">Локации</a>
+      <a href="{{ "/#faq" | relURL }}" class="header__link">Помощь</a>
+    </div>
+    
+    <a href="{{ .Site.Params.botUrl }}?start=web_header" class="btn btn--accent header__cta" target="_blank" rel="noopener">
+      Войти в бота
+    </a>
+    
+    <button class="header__burger" id="mobile-menu-btn" aria-label="Открыть меню" aria-expanded="false">
+      <span class="header__burger-line"></span>
+      <span class="header__burger-line"></span>
+      <span class="header__burger-line"></span>
+    </button>
+  </nav>
+</header>

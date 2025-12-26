@@ -1,0 +1,49 @@
+{{ define "main" }}
+<main class="page">
+  <!-- Hero Section -->
+  <section class="hero hero--inner container">
+    {{ if .Params.icon }}
+    <span class="hero__icon">{{ .Params.icon }}</span>
+    {{ end }}
+    <h1 class="hero__title">{{ .Params.headline | default .Title }}</h1>
+    {{ if .Params.benefit }}
+    <p class="hero__subtitle">{{ .Params.benefit }}</p>
+    {{ end }}
+  </section>
+  
+  <!-- Instructions Section -->
+  <section class="instructions container">
+    <h2 class="instructions__title">Как начать</h2>
+    <div class="instructions__steps">
+      <div class="step">
+        <span class="step__number">1</span>
+        <p class="step__text">Перейдите в бота и оплатите подписку</p>
+      </div>
+      <div class="step">
+        <span class="step__number">2</span>
+        <p class="step__text">Скачайте приложение <strong>{{ .Params.appName | default "приложение" }}</strong></p>
+      </div>
+      <div class="step">
+        <span class="step__number">3</span>
+        <p class="step__text">Вставьте ссылку из бота в приложение</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Desktop CTA Section (hidden on mobile) -->
+  {{ if .Params.deeplink }}
+  <section class="cta-section container">
+    <a href="{{ .Site.Params.botUrl }}?start={{ .Params.deeplink }}" class="btn btn--accent btn--large" target="_blank" rel="noopener">
+      Получить ключ в Telegram
+    </a>
+  </section>
+  {{ end }}
+  
+  <!-- Content from markdown (if any) -->
+  {{ if .Content }}
+  <section class="content container">
+    {{ .Content }}
+  </section>
+  {{ end }}
+</main>
+{{ end }}

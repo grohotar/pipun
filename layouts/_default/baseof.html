@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "ru" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ .Description | default .Site.Params.description | default .Site.Title }}">
+  
+  {{/* SCSS через Hugo Pipes */}}
+  {{ $scss := resources.Get "scss/main.scss" }}
+  {{ $style := $scss | toCSS (dict "outputStyle" "compressed") | minify }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  
+  {{/* Preconnect для Telegram */}}
+  <link rel="preconnect" href="https://t.me">
+</head>
+<body>
+  {{ partial "header.html" . }}
+  
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  
+  {{ partial "footer.html" . }}
+  {{ partial "sticky-cta.html" . }}
+  
+  <script src="{{ "js/main.js" | relURL }}" defer></script>
+</body>
+</html>

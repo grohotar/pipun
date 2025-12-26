@@ -1,0 +1,8 @@
+{{/* Sticky CTA отображается только на внутренних страницах с deeplink */}}
+{{ if .Params.deeplink }}
+<div class="sticky-cta">
+  <a href="{{ .Site.Params.botUrl }}?start={{ .Params.deeplink }}" class="btn btn--accent btn--full" target="_blank" rel="noopener">
+    Получить ключ в Telegram
+  </a>
+</div>
+{{ end }}
