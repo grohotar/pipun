@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  pipun-website:
+    build: .
+    container_name: pipun-website
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3030:80"
+    networks:
+      - default
+
+networks:
+  default:
+    external: true
+    name: remnawave_default
