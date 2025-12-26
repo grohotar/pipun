@@ -7,6 +7,11 @@
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ .Description | default .Site.Params.description | default .Site.Title }}">
   
+  {{/* Google Fonts */}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
   {{/* SCSS через Hugo Pipes */}}
   {{ $scss := resources.Get "scss/main.scss" }}
   {{ $style := $scss | toCSS (dict "outputStyle" "compressed") | minify }}
