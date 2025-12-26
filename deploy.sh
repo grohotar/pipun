@@ -11,9 +11,9 @@ echo "🚀 Deploying Pipun VPN Website..."
 echo "📥 Pulling latest code from GitHub..."
 git pull origin main
 
-# Build static files with Hugo in Docker
+# Build static files with Hugo
 echo "🔨 Building static site with Hugo..."
-docker compose --profile build run --rm hugo-builder
+hugo --minify
 
 # Restart nginx to apply changes
 echo "🔄 Restarting nginx..."
