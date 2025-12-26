@@ -51,6 +51,7 @@
   backdrop-filter: $glass-blur;
   -webkit-backdrop-filter: $glass-blur;
   transition: all 0.3s ease;
+  min-width: 0;
   
   &:hover {
     border-color: rgba($color-accent, 0.5);
@@ -67,6 +68,7 @@
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: $spacing-sm;
+    word-break: break-word;
   }
   
   &__text {
@@ -260,5 +262,44 @@
   
   &__text {
     color: $color-text-muted;
+  }
+}
+
+// Security Section
+.section-subtitle {
+  text-align: center;
+  color: $color-text-muted;
+  margin-top: -$spacing-lg;
+  margin-bottom: $spacing-xl;
+}
+
+.security-grid {
+  display: grid;
+  gap: $spacing-lg;
+  grid-template-columns: 1fr;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.security-card {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  border-radius: $border-radius;
+  padding: $spacing-xl;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: $spacing-md;
+    color: $color-text;
+  }
+  
+  &__text {
+    color: $color-text-muted;
+    line-height: 1.7;
   }
 }

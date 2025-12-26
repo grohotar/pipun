@@ -14,7 +14,7 @@
   
   {{/* SCSS через Hugo Pipes */}}
   {{ $scss := resources.Get "scss/main.scss" }}
-  {{ $style := $scss | toCSS (dict "outputStyle" "compressed") | minify }}
+  {{ $style := $scss | toCSS (dict "outputStyle" "compressed") | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
   
   {{/* Preconnect для Telegram */}}
