@@ -11,13 +11,13 @@ echo "🚀 Deploying Pipun VPN Website..."
 echo "📥 Pulling latest code from GitHub..."
 git pull origin main
 
-# Build and restart container
-echo "🔨 Building Docker image..."
-docker-compose build
+# Build static files with Hugo in Docker
+echo "🔨 Building static site with Hugo..."
+docker compose --profile build run --rm hugo-builder
 
-echo "🔄 Restarting container..."
-docker-compose down
-docker-compose up -d
+# Restart nginx to apply changes
+echo "🔄 Restarting nginx..."
+docker restart remnawave-nginx
 
 echo "✅ Deployment complete!"
-echo "🌐 Site should be available at http://pipun.pro"
+echo "🌐 Site should be available at https://pipun.pro"
