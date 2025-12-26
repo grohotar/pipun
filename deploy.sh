@@ -15,9 +15,5 @@ git pull origin main
 echo "🔨 Building static site with Hugo..."
 hugo --minify
 
-# Restart nginx to apply changes
-echo "🔄 Restarting nginx..."
-docker restart remnawave-nginx
-
 echo "✅ Deployment complete!"
-echo "🌐 Site should be available at https://pipun.pro"
+echo "🌐 Site available at https://pipun.pro"
