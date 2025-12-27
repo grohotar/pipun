@@ -14,27 +14,27 @@
     <h2 class="section-title">Устройства</h2>
     <div class="grid grid--3">
       <a href="{{ "devices/iphone/" | relURL }}" class="card">
-        <span class="card__icon">📱</span>
+        <img src="{{ "icons/ios.svg" | relURL }}" alt="iPhone" class="card__icon-img">
         <h3 class="card__title">iPhone</h3>
       </a>
       <a href="{{ "devices/android/" | relURL }}" class="card">
-        <span class="card__icon">🤖</span>
+        <img src="{{ "icons/android.svg" | relURL }}" alt="Android" class="card__icon-img">
         <h3 class="card__title">Android</h3>
       </a>
       <a href="{{ "devices/windows/" | relURL }}" class="card">
-        <span class="card__icon">💻</span>
+        <img src="{{ "icons/windows.svg" | relURL }}" alt="Windows" class="card__icon-img">
         <h3 class="card__title">Windows</h3>
       </a>
       <a href="{{ "devices/macos/" | relURL }}" class="card">
-        <span class="card__icon">🍎</span>
+        <img src="{{ "icons/mac.svg" | relURL }}" alt="macOS" class="card__icon-img">
         <h3 class="card__title">macOS</h3>
       </a>
       <a href="{{ "devices/android-tv/" | relURL }}" class="card">
-        <span class="card__icon">📺</span>
+        <img src="{{ "icons/androidtv.svg" | relURL }}" alt="Android TV" class="card__icon-img">
         <h3 class="card__title">Android TV</h3>
       </a>
       <a href="{{ "devices/apple-tv/" | relURL }}" class="card">
-        <span class="card__icon">🍏</span>
+        <img src="{{ "icons/tv.svg" | relURL }}" alt="Apple TV" class="card__icon-img">
         <h3 class="card__title">Apple TV</h3>
       </a>
     </div>
@@ -76,37 +76,60 @@
     <h2 class="section-title">Решения</h2>
     <div class="grid grid--4">
       <a href="{{ "solutions/instagram/" | relURL }}" class="card">
-        <span class="card__icon">📸</span>
+        <img src="{{ "icons/instagram.svg" | relURL }}" alt="Instagram" class="card__icon-img">
         <h3 class="card__title">Instagram</h3>
       </a>
       <a href="{{ "solutions/youtube/" | relURL }}" class="card">
-        <span class="card__icon">▶️</span>
+        <img src="{{ "icons/youtube.svg" | relURL }}" alt="YouTube" class="card__icon-img">
         <h3 class="card__title">YouTube</h3>
       </a>
       <a href="{{ "solutions/steam/" | relURL }}" class="card">
-        <span class="card__icon">🎮</span>
+        <img src="{{ "icons/steam.svg" | relURL }}" alt="Steam" class="card__icon-img">
         <h3 class="card__title">Steam</h3>
       </a>
       <a href="{{ "solutions/ps-store/" | relURL }}" class="card">
-        <span class="card__icon">🎯</span>
+        <img src="{{ "icons/playstation.svg" | relURL }}" alt="PS Store" class="card__icon-img">
         <h3 class="card__title">PS Store</h3>
       </a>
       <a href="{{ "solutions/canva/" | relURL }}" class="card">
-        <span class="card__icon">🎨</span>
+        <img src="{{ "icons/canva.svg" | relURL }}" alt="Canva" class="card__icon-img">
         <h3 class="card__title">Canva</h3>
       </a>
       <a href="{{ "solutions/adobe/" | relURL }}" class="card">
-        <span class="card__icon">🖌️</span>
+        <img src="{{ "icons/adobe.svg" | relURL }}" alt="Adobe" class="card__icon-img">
         <h3 class="card__title">Adobe</h3>
       </a>
       <a href="{{ "solutions/midjourney/" | relURL }}" class="card">
-        <span class="card__icon">🤖</span>
+        <img src="{{ "icons/midjourney.svg" | relURL }}" alt="Midjourney" class="card__icon-img">
         <h3 class="card__title">Midjourney</h3>
       </a>
       <a href="{{ "solutions/ai/" | relURL }}" class="card">
-        <span class="card__icon">🧠</span>
-        <h3 class="card__title">AI (ChatGPT/Claude)</h3>
+        <img src="{{ "icons/ai.svg" | relURL }}" alt="Нейросети" class="card__icon-img">
+        <h3 class="card__title">Нейросети</h3>
       </a>
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section class="section container" id="support">
+    <h2 class="section-title">Заботливая команда поддержки</h2>
+    <p class="section-desc">Наша команда профессионалов всегда готова помочь. Обращайтесь с любыми вопросами о VPN — мы найдём решение!</p>
+    <div class="support-grid">
+      <div class="support-card">
+        <span class="support-card__icon">💬</span>
+        <h3 class="support-card__title">Отвечаем 24/7</h3>
+        <p class="support-card__text">Мы всегда готовы прийти на помощь</p>
+      </div>
+      <div class="support-card">
+        <span class="support-card__icon">🩷</span>
+        <h3 class="support-card__title">Говорим понятным языком</h3>
+        <p class="support-card__text">Делаем сложные вещи простыми — никаких технических терминов</p>
+      </div>
+      <div class="support-card">
+        <span class="support-card__icon">⚙️</span>
+        <h3 class="support-card__title">Помогаем настроить VPN</h3>
+        <p class="support-card__text">От смартфонов до телевизоров — позаботимся обо всём!</p>
+      </div>
     </div>
   </section>
 
@@ -124,7 +147,6 @@
       </div>
       {{ end }}
     </div>
-    <p class="pricing__note">Принимаем карты РФ и Крипту в боте</p>
   </section>
 
   <!-- Security Section -->

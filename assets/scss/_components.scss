@@ -16,7 +16,6 @@
     box-shadow: $shadow-glow;
     
     &:hover {
-      transform: translateY(-2px);
       box-shadow: 0 0 30px rgba($color-accent, 0.5);
       color: $color-text;
     }
@@ -47,7 +46,7 @@
   background: $glass-bg;
   border: 1px solid $glass-border;
   border-radius: $border-radius;
-  padding: $spacing-lg;
+  padding: 20px;
   backdrop-filter: $glass-blur;
   -webkit-backdrop-filter: $glass-blur;
   transition: all 0.3s ease;
@@ -59,15 +58,22 @@
   }
   
   &__icon {
-    font-size: 2.5rem;
-    margin-bottom: $spacing-md;
+    font-size: 2rem;
+    margin-bottom: 24px;
     display: block;
+    line-height: 1;
+  }
+  
+  &__icon-img {
+    height: 36px;
+    width: auto;
+    margin-bottom: 24px;
   }
   
   &__title {
     font-size: 1.125rem;
     font-weight: 600;
-    margin-bottom: $spacing-sm;
+    margin-bottom: 0;
     word-break: break-word;
   }
   
@@ -82,7 +88,7 @@
   background: $glass-bg;
   border: 1px solid $glass-border;
   border-radius: $border-radius;
-  padding: $spacing-xl;
+  padding: 24px;
   backdrop-filter: $glass-blur;
   -webkit-backdrop-filter: $glass-blur;
   text-align: center;
@@ -287,7 +293,7 @@
   background: $glass-bg;
   border: 1px solid $glass-border;
   border-radius: $border-radius;
-  padding: $spacing-xl;
+  padding: 24px;
   backdrop-filter: $glass-blur;
   -webkit-backdrop-filter: $glass-blur;
   
@@ -301,5 +307,48 @@
   &__text {
     color: $color-text-muted;
     line-height: 1.7;
+  }
+}
+
+
+// Support Section
+.section-desc {
+  color: $color-text-muted;
+  margin-bottom: $spacing-xl;
+  max-width: 500px;
+}
+
+.support-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+.support-card {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  border-radius: $border-radius;
+  padding: 24px;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  
+  &__icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 28px;
+    line-height: 1;
+  }
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: $color-text;
+  }
+  
+  &__text {
+    color: $color-text-muted;
+    line-height: 1.5;
+    margin: 0;
   }
 }

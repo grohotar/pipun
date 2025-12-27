@@ -17,6 +17,7 @@
       "main",
       "meta",
       "nav",
+      "noscript",
       "p",
       "script",
       "section",
@@ -31,6 +32,7 @@
       "btn--large",
       "card",
       "card__icon",
+      "card__icon-img",
       "card__title",
       "container",
       "cta-section",
@@ -42,8 +44,7 @@
       "footer__inner",
       "footer__links",
       "footer__logo",
-      "footer__logo-icon",
-      "footer__logo-text",
+      "footer__logo-svg",
       "footer__tagline",
       "grid",
       "grid--3",
@@ -76,7 +77,7 @@
       "pricing__grid",
       "pricing__note",
       "section",
-      "section-subtitle",
+      "section-desc",
       "section-title",
       "security-card",
       "security-card__text",
@@ -86,11 +87,11 @@
       "step__number",
       "step__text",
       "sticky-cta",
-      "tech-feature",
-      "tech-feature__icon",
-      "tech-feature__text",
-      "tech-feature__title",
-      "tech-features"
+      "support-card",
+      "support-card__icon",
+      "support-card__text",
+      "support-card__title",
+      "support-grid"
     ],
     "ids": [
       "devices",
@@ -101,7 +102,7 @@
       "pricing",
       "security",
       "solutions",
-      "tech"
+      "support"
     ]
   }
 }

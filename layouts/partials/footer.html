@@ -1,9 +1,8 @@
 <footer class="footer">
   <div class="container footer__inner">
-    <div class="footer__logo">
-      <span class="footer__logo-icon">🛡️</span>
-      <span class="footer__logo-text">Pipun VPN</span>
-    </div>
+    <a href="{{ "/" | relURL }}" class="footer__logo">
+      <img src="{{ "logo.svg" | relURL }}" alt="Pipun VPN" class="footer__logo-svg">
+    </a>
     
     <div class="footer__links">
       <a href="{{ .Site.Params.supportUrl }}" target="_blank" rel="noopener">Поддержка</a>

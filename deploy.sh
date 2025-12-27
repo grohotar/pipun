@@ -7,6 +7,9 @@ set -e
 
 echo "🚀 Deploying Pipun VPN Website..."
 
+# Change to project directory
+cd /opt/pipun
+
 # Pull latest changes
 echo "📥 Pulling latest code from GitHub..."
 git pull origin main

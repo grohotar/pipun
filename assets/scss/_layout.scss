@@ -8,7 +8,6 @@
   background: rgba($color-bg-dark, 0.9);
   backdrop-filter: $glass-blur;
   -webkit-backdrop-filter: $glass-blur;
-  border-bottom: 1px solid $color-border;
   
   &__nav {
     display: flex;
@@ -154,6 +153,15 @@
     gap: $spacing-sm;
     font-weight: 700;
     font-size: 1.125rem;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  &__logo-svg {
+    height: 28px;
+    width: auto;
   }
   
   &__links {
@@ -196,9 +204,13 @@
 
 // Hero Section
 .hero {
-  padding-top: 120px; // 70px header + 50px spacing
+  padding-top: 60px;
   padding-bottom: $spacing-3xl;
   text-align: center;
+  
+  @media (min-width: $breakpoint-md) {
+    padding-top: 120px;
+  }
   
   &__icon {
     font-size: 4rem;
@@ -299,7 +311,7 @@
   
   &__note {
     text-align: center;
-    margin-top: $spacing-xl;
+    margin-top: 16px;
     color: $color-text-muted;
   }
 }
