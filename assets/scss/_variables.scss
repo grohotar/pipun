@@ -1,45 +1,24 @@
-// Цвета
-$color-bg-dark: #0f0f0f;
-$color-bg-card: rgba(31, 31, 31, 0.5);
-$color-border: #2a2a2a;
-$color-accent: #FF1FA5;
-$color-accent-light: #ff66c4;
-$color-text: #ffffff;
-$color-text-muted: #ffffff;
-$color-success: #4ade80;
+// Colors
+$black: #000000;
+$white: #ffffff;
+$pink: #ff1fa5;
 
-// Градиенты
-$gradient-accent: linear-gradient(135deg, #FF1FA5, #d946ef);
+// Grid System
+$grid-padding-1600: 48px;
+$grid-gap-1600: 24px;
+$grid-max-width: 1704px;
 
-// Шрифты
-$font-family: 'M PLUS 1p', -apple-system, BlinkMacSystemFont, sans-serif;
+$grid-padding-1200: 36px;
+$grid-gap-1200: 24px;
 
-// Размеры
-$container-max: 1200px;
-$border-radius: 1rem;
-$border-radius-sm: 0.5rem;
-$border-radius-full: 9999px;
+$grid-padding-992: 32px;
+$grid-gap-992: 16px;
 
-// Spacing
-$spacing-xs: 0.25rem;
-$spacing-sm: 0.5rem;
-$spacing-md: 1rem;
-$spacing-lg: 1.5rem;
-$spacing-xl: 2rem;
-$spacing-2xl: 3rem;
-$spacing-3xl: 4rem;
+$grid-padding-768: 20px;
+$grid-gap-768: 16px;
 
-// Breakpoints
-$breakpoint-sm: 640px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
-$breakpoint-xl: 1280px;
+$grid-padding-mobile: 16px;
+$grid-gap-mobile: 12px;
 
-// Shadows
-$shadow-glow: 0 0 20px rgba($color-accent, 0.3);
-$shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-
-// Glassmorphism
-$glass-bg: rgba(31, 31, 31, 0.5);
-$glass-border: rgba(255, 255, 255, 0.1);
-$glass-blur: blur(10px);
+// Font
+$font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;

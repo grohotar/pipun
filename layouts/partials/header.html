@@ -1,23 +1,24 @@
 <header class="header">
-  <nav class="header__nav container">
-    <a href="{{ "/" | relURL }}" class="header__logo">
-      <img src="{{ "logo.svg" | relURL }}" alt="Pipun VPN" class="header__logo-svg">
-    </a>
-    
-    <div class="header__menu" id="mobile-menu">
-      <a href="{{ "/#devices" | relURL }}" class="header__link">Устройства</a>
-      <a href="{{ "/#locations" | relURL }}" class="header__link">Локации</a>
-      <a href="{{ "/#faq" | relURL }}" class="header__link">Помощь</a>
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="/images/logo.svg" alt="Pipun VPN" width="135" height="36">
+      </a>
+
+      <nav class="nav">
+        <a href="#locations" class="nav-link">Локации</a>
+        <a href="#devices" class="nav-link">Устройства</a>
+        <a href="#pricing" class="nav-link">Цены</a>
+        <a href="#blog" class="nav-link">Блог</a>
+      </nav>
+
+      <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <a href="https://t.me/pipun_bot" target="_blank" rel="noopener noreferrer" class="button">Подключить ↗</a>
     </div>
-    
-    <a href="{{ .Site.Params.botUrl }}?start=web_header" class="btn btn--accent header__cta" target="_blank" rel="noopener">
-      Войти в бота
-    </a>
-    
-    <button class="header__burger" id="mobile-menu-btn" aria-label="Открыть меню" aria-expanded="false">
-      <span class="header__burger-line"></span>
-      <span class="header__burger-line"></span>
-      <span class="header__burger-line"></span>
-    </button>
-  </nav>
+  </div>
 </header>

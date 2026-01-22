@@ -1,25 +1,11 @@
-baseURL = "https://pipun.pro/"
-languageCode = "ru"
-title = "Pipun VPN"
+baseURL = 'https://pipun.pro/'
+languageCode = 'ru-RU'
+title = 'Pipun VPN'
 
 [params]
-  botUrl = "https://t.me/pipun_bot"
-  supportUrl = "https://t.me/pipunhelper"
-  description = "VPN, который работает, когда другие заблокированы. Доступ к Instagram, YouTube 4K и Steam."
-  keywords = "VPN, ВПН, Россия, разблокировка, Instagram, YouTube, Steam, приватность"
-  author = "Pipun VPN"
-  images = ["logo.svg"]
+  description = 'Полноценная работа ваших сервисов'
 
-[sitemap]
-  changeFreq = "weekly"
-  priority = 0.5
-
-[markup.goldmark.renderer]
-  unsafe = true
-
-[build]
-  writeStats = true
-
-[module]
-  [module.hugoVersion]
-    extended = true
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

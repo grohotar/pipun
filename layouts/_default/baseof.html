@@ -1,82 +1,23 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "ru" }}">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  {{/* Title */}}
-  <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.description }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-  
-  {{/* SEO Meta Tags */}}
-  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
-  <meta name="keywords" content="{{ .Site.Params.keywords }}">
-  <meta name="author" content="{{ .Site.Params.author }}">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="{{ .Permalink }}">
-  
-  {{/* Open Graph */}}
-  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-  <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
-  <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-  <meta property="og:locale" content="ru_RU">
-  {{ with .Site.Params.images }}<meta property="og:image" content="{{ index . 0 | absURL }}">{{ end }}
-  
-  {{/* Twitter Card */}}
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-  <meta name="twitter:description" content="{{ .Description | default .Site.Params.description }}">
-  {{ with .Site.Params.images }}<meta name="twitter:image" content="{{ index . 0 | absURL }}">{{ end }}
-  
-  {{/* Favicon */}}
-  <link rel="icon" type="image/png" href="{{ "favicon.png" | relURL }}">
-  
-  {{/* Google Fonts */}}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700;800&display=swap" rel="stylesheet">
-  
-  {{/* SCSS через Hugo Pipes */}}
-  {{ $scss := resources.Get "scss/main.scss" }}
-  {{ $style := $scss | toCSS (dict "outputStyle" "compressed") | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
-  
-  {{/* Preconnect для Telegram */}}
-  <link rel="preconnect" href="https://t.me">
-  
-  {{/* Favicon */}}
-  <link rel="icon" type="image/png" href="{{ "favicon.png" | relURL }}">
-  
-  {{/* Yandex.Metrika counter */}}
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106054588', 'ym');
-    ym(106054588, 'init', {
-      ssr:true,
-      webvisor:true,
-      clickmap:true,
-      ecommerce:"dataLayer",
-      accurateTrackBounce:true,
-      trackLinks:true
-    });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/106054588" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
+  <meta name="description" content="{{ .Site.Params.description }}">
+  {{ $styles := resources.Get "scss/main.scss" | css.Sass | resources.Minify }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 </head>
 <body>
-  {{ partial "header.html" . }}
-  
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  
-  {{ partial "footer.html" . }}
-  {{ partial "sticky-cta.html" . }}
-  
-  <script src="{{ "js/main.js" | relURL }}" defer></script>
+  {{ block "main" . }}{{ end }}
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

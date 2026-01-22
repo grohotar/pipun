@@ -1,184 +1,347 @@
 {{ define "main" }}
-<main class="home">
+{{ partial "header.html" . }}
+
+<main>
   <!-- Hero Section -->
-  <section class="hero container">
-    <h1 class="hero__title">VPN, который работает, когда другие <span>заблокированы</span></h1>
-    <p class="hero__subtitle">Доступ к Instagram, YouTube 4K и Steam. Одна подписка на 5 устройств</p>
-    <a href="{{ .Site.Params.botUrl }}?start=web_home" class="btn btn--accent btn--large">
-      Подключить через Telegram
-    </a>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <h1>Полноценная работа ваших сервисов</h1>
+          <p class="hero-description">Помогает пользоваться сервисами, играми и&nbsp;сайтами, которым нужно зарубежное подключение. Трафик шифруется, а&nbsp;ваше виртуальное местоположение меняется на&nbsp;другую страну. Одна подписка действует на&nbsp;телефоны, компьютеры и&nbsp;телевизоры</p>
+          <a href="https://t.me/pipun_bot" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
+        </div>
+        <div class="hero-globe" id="globeViz"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countries Section -->
+  <section id="locations" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Все страны в&nbsp;одной подписке</h2>
+        <a href="https://status.pavuka.net/dashboard/1" target="_blank" rel="noopener noreferrer" class="link-pink" style="position: relative; z-index: 10;">Статус серверов ↗</a>
+      </div>
+
+      <div class="countries-grid">
+        <div class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/finland.svg" alt="Финляндия">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Финляндия</div>
+            <div class="country-description">Минимальный пинг</div>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/germany.svg" alt="Германия">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Германия</div>
+            <div class="country-description">Youtube 4K 60fps</div>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/turkey.svg" alt="Турция">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Турция</div>
+            <div class="country-description">YouTube, PS Store</div>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/latvia.svg" alt="Латвия">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Латвия</div>
+            <div class="country-description">Минимум блокировок</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="countries-grid-row">
+        <div class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/kazakhstan.svg" alt="Казахстан">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Казахстан</div>
+            <div class="country-description">Доступ к&nbsp;банкам</div>
+          </div>
+        </div>
+
+        <div class="country-card coming-soon">
+          <div class="country-flag">
+            <img src="/images/flags/india.svg" alt="Индия">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Индия</div>
+            <div class="country-description">Низкие цены</div>
+          </div>
+          <div class="badge">Скоро в&nbsp;подписке</div>
+        </div>
+
+        <div class="country-card coming-soon">
+          <div class="country-flag">
+            <img src="/images/flags/usa.svg" alt="США">
+          </div>
+          <div class="country-info">
+            <div class="country-name">США</div>
+            <div class="country-description">Midjourney и&nbsp;нейросети</div>
+          </div>
+          <div class="badge">Скоро в&nbsp;подписке</div>
+        </div>
+
+        <div class="country-card coming-soon">
+          <div class="country-flag">
+            <img src="/images/flags/netherlands.svg" alt="Нидерланды">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Нидерланды</div>
+            <div class="country-description">Высокоскоростной хаб</div>
+          </div>
+          <div class="badge">Скоро в&nbsp;подписке</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Devices Section -->
-  <section class="section container" id="devices">
-    <h2 class="section-title">Устройства</h2>
-    <div class="grid grid--3">
-      <a href="{{ "devices/iphone/" | relURL }}" class="card">
-        <img src="{{ "icons/ios.svg" | relURL }}" alt="iPhone" class="card__icon-img">
-        <h3 class="card__title">iPhone</h3>
-      </a>
-      <a href="{{ "devices/android/" | relURL }}" class="card">
-        <img src="{{ "icons/android.svg" | relURL }}" alt="Android" class="card__icon-img">
-        <h3 class="card__title">Android</h3>
-      </a>
-      <a href="{{ "devices/windows/" | relURL }}" class="card">
-        <img src="{{ "icons/Windows.svg" | relURL }}" alt="Windows" class="card__icon-img">
-        <h3 class="card__title">Windows</h3>
-      </a>
-      <a href="{{ "devices/macos/" | relURL }}" class="card">
-        <img src="{{ "icons/mac.svg" | relURL }}" alt="macOS" class="card__icon-img">
-        <h3 class="card__title">macOS</h3>
-      </a>
-      <a href="{{ "devices/android-tv/" | relURL }}" class="card">
-        <img src="{{ "icons/androidtv.svg" | relURL }}" alt="Android TV" class="card__icon-img">
-        <h3 class="card__title">Android TV</h3>
-      </a>
-      <a href="{{ "devices/apple-tv/" | relURL }}" class="card">
-        <img src="{{ "icons/tv.svg" | relURL }}" alt="Apple TV" class="card__icon-img">
-        <h3 class="card__title">Apple TV</h3>
-      </a>
-    </div>
-  </section>
+  <section id="devices" class="section">
+    <div class="container">
+      <h2 class="section-title">Работает на&nbsp;всех устройствах</h2>
 
-  <!-- Locations Section -->
-  <section class="section container" id="locations">
-    <h2 class="section-title">Локации</h2>
-    <div class="grid grid--3">
-      <a href="{{ "locations/turkey/" | relURL }}" class="card">
-        <span class="card__icon">🇹🇷</span>
-        <h3 class="card__title">Турция</h3>
-      </a>
-      <a href="{{ "locations/kazakhstan/" | relURL }}" class="card">
-        <span class="card__icon">🇰🇿</span>
-        <h3 class="card__title">Казахстан</h3>
-      </a>
-      <a href="{{ "locations/argentina/" | relURL }}" class="card">
-        <span class="card__icon">🇦🇷</span>
-        <h3 class="card__title">Аргентина</h3>
-      </a>
-      <a href="{{ "locations/usa/" | relURL }}" class="card">
-        <span class="card__icon">🇺🇸</span>
-        <h3 class="card__title">США</h3>
-      </a>
-      <a href="{{ "locations/germany/" | relURL }}" class="card">
-        <span class="card__icon">🇩🇪</span>
-        <h3 class="card__title">Германия</h3>
-      </a>
-      <a href="{{ "locations/netherlands/" | relURL }}" class="card">
-        <span class="card__icon">🇳🇱</span>
-        <h3 class="card__title">Нидерланды</h3>
-      </a>
-    </div>
-  </section>
+      <div class="devices-grid">
+        <div class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/iphone.png" alt="iPhone">
+          </div>
+          <div class="device-name">IPhone</div>
+        </div>
 
-  <!-- Solutions Section -->
-  <section class="section container" id="solutions">
-    <h2 class="section-title">Решения</h2>
-    <div class="grid grid--4">
-      <a href="{{ "solutions/instagram/" | relURL }}" class="card">
-        <img src="{{ "icons/instagram.svg" | relURL }}" alt="Instagram" class="card__icon-img">
-        <h3 class="card__title">Instagram</h3>
-      </a>
-      <a href="{{ "solutions/youtube/" | relURL }}" class="card">
-        <img src="{{ "icons/youtube.svg" | relURL }}" alt="YouTube" class="card__icon-img">
-        <h3 class="card__title">YouTube</h3>
-      </a>
-      <a href="{{ "solutions/steam/" | relURL }}" class="card">
-        <img src="{{ "icons/steam.svg" | relURL }}" alt="Steam" class="card__icon-img">
-        <h3 class="card__title">Steam</h3>
-      </a>
-      <a href="{{ "solutions/ps-store/" | relURL }}" class="card">
-        <img src="{{ "icons/playstation.svg" | relURL }}" alt="PS Store" class="card__icon-img">
-        <h3 class="card__title">PS Store</h3>
-      </a>
-      <a href="{{ "solutions/canva/" | relURL }}" class="card">
-        <img src="{{ "icons/canva.svg" | relURL }}" alt="Canva" class="card__icon-img">
-        <h3 class="card__title">Canva</h3>
-      </a>
-      <a href="{{ "solutions/adobe/" | relURL }}" class="card">
-        <img src="{{ "icons/adobe.svg" | relURL }}" alt="Adobe" class="card__icon-img">
-        <h3 class="card__title">Adobe</h3>
-      </a>
-      <a href="{{ "solutions/midjourney/" | relURL }}" class="card">
-        <img src="{{ "icons/midjourney.svg" | relURL }}" alt="Midjourney" class="card__icon-img">
-        <h3 class="card__title">Midjourney</h3>
-      </a>
-      <a href="{{ "solutions/ai/" | relURL }}" class="card">
-        <img src="{{ "icons/ai.svg" | relURL }}" alt="Нейросети" class="card__icon-img">
-        <h3 class="card__title">Нейросети</h3>
-      </a>
-    </div>
-  </section>
+        <div class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/android.png" alt="Android">
+          </div>
+          <div class="device-name">Android</div>
+        </div>
 
-  <!-- Support Section -->
-  <section class="section container" id="support">
-    <h2 class="section-title">Заботливая команда поддержки</h2>
-    <p class="section-desc">Наша команда профессионалов всегда готова помочь. Обращайтесь с любыми вопросами о VPN — мы найдём решение!</p>
-    <div class="support-grid">
-      <div class="support-card">
-        <span class="support-card__icon">💬</span>
-        <h3 class="support-card__title">Отвечаем 24/7</h3>
-        <p class="support-card__text">Мы всегда готовы прийти на помощь</p>
+        <div class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/mac.png" alt="Mac">
+          </div>
+          <div class="device-name">Mac</div>
+        </div>
+
+        <div class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/windows.png" alt="Windows">
+          </div>
+          <div class="device-name">Windows</div>
+        </div>
+
+        <div class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/appletv.png" alt="Apple TV">
+          </div>
+          <div class="device-name">Apple TV</div>
+        </div>
+
+        <div class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/androidtv.png" alt="Android TV">
+          </div>
+          <div class="device-name">Android TV</div>
+        </div>
       </div>
-      <div class="support-card">
-        <span class="support-card__icon">🩷</span>
-        <h3 class="support-card__title">Говорим понятным языком</h3>
-        <p class="support-card__text">Делаем сложные вещи простыми — никаких технических терминов</p>
-      </div>
-      <div class="support-card">
-        <span class="support-card__icon">⚙️</span>
-        <h3 class="support-card__title">Помогаем настроить VPN</h3>
-        <p class="support-card__text">От смартфонов до телевизоров — позаботимся обо всём!</p>
+    </div>
+  </section>
+
+  <!-- Steps Section -->
+  <section class="section steps-section">
+    <div class="container">
+      <h2 class="section-title">Подключение за&nbsp;пару минут</h2>
+
+      <div class="steps-wrapper">
+        <div class="steps-image">
+          <img src="/images/iphones-mockup.png" alt="iPhone mockup">
+        </div>
+        
+        <div class="steps-grid">
+          <div class="step">
+            <h3 class="step-title">Перейти в&nbsp;Телеграм</h3>
+            <p class="step-description">Запустите бота, выберите подходящий тариф и&nbsp;оплатите его любой российской картой или криптовалютой прямо в&nbsp;чате</p>
+          </div>
+
+          <div class="step">
+            <h3 class="step-title">Получить ключ доступа</h3>
+            <p class="step-description">После оплаты бот пришлет ваш уникальный ключ и&nbsp;инструкцию. В&nbsp;коде уже зашиты сложные настройки серверов, поэтому вам не&nbsp;придется прописывать вручную</p>
+          </div>
+
+          <div class="step">
+            <h3 class="step-title">Включить VPN</h3>
+            <p class="step-description">Скачайте приложение и&nbsp;вставьте в&nbsp;него полученный ключ. Программа сама всё настроит за&nbsp;секунду. Нажмите кнопку на&nbsp;главном экране&nbsp;— всё готово</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Pricing Section -->
-  <section class="section container" id="pricing">
-    <h2 class="section-title">Тарифы</h2>
-    <div class="pricing__grid">
-      {{ range .Site.Data.pricing.plans }}
-      <div class="pricing-card {{ if .popular }}pricing-card--popular{{ end }}">
-        {{ if .popular }}<span class="pricing-card__badge">🔥 ХИТ</span>{{ end }}
-        <h3 class="pricing-card__duration">{{ .duration }}</h3>
-        <p class="pricing-card__price">{{ .price }} <span>₽</span></p>
-        {{ if .discount }}<span class="pricing-card__discount">{{ .discount }}</span>{{ end }}
-        <a href="{{ $.Site.Params.botUrl }}?start=web_pricing" class="btn btn--accent">Купить</a>
-      </div>
-      {{ end }}
+  <section id="pricing" class="section pricing-section">
+    <div class="container">
+      <h2 class="section-title">Много вариантов подписок</h2>
     </div>
-  </section>
 
-  <!-- Security Section -->
-  <section class="section container" id="security">
-    <h2 class="section-title">Заботимся о вашей безопасности</h2>
-    <div class="security-grid">
-      <div class="security-card">
-        <h3 class="security-card__title">Надежно шифруем трафик</h3>
-        <p class="security-card__text">Pipun VPN гарантирует полное шифрование трафика, сохраняя вашу приватность и безопасность в сети, где бы вы ни находились</p>
-      </div>
-      <div class="security-card">
-        <h3 class="security-card__title">Не торгуем вашими данными</h3>
-        <p class="security-card__text">В отличие от бесплатных VPN, мы не зарабатываем на продаже личной информации. С Pipun VPN ваша приватность всегда под надёжной защитой</p>
+    <div class="pricing-wrapper">
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">1 неделя</h3>
+            <p class="pricing-description">Проверить скорость и&nbsp;убедиться, что всё работает на&nbsp;вашем устройстве</p>
+          </div>
+          <a href="https://t.me/pipun_bot" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;149₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">1 месяц</h3>
+            <p class="pricing-description">Базовый вариант, если не&nbsp;хотите оплачивать надолго вперед</p>
+          </div>
+          <a href="https://t.me/pipun_bot" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;289₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">3 месяца</h3>
+            <p class="pricing-description">Позволяет сэкономить бюджет, не&nbsp;оплачивая сразу целый год</p>
+          </div>
+          <a href="https://t.me/pipun_bot" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;789₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">6 месяцев</h3>
+            <p class="pricing-description">Лучший выбор, если нужна стабильность без частых продлений доступа</p>
+          </div>
+          <a href="https://t.me/pipun_bot" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;1489₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">12 месяцев</h3>
+            <p class="pricing-description">Самый выгодный тариф. Лучшая цена в&nbsp;пересчете на&nbsp;месяц</p>
+          </div>
+          <a href="https://t.me/pipun_bot" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;2689₽</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="section container" id="faq">
-    <h2 class="section-title">Частые вопросы</h2>
-    <div class="faq">
-      {{ range .Site.Data.faq.items }}
-      <div class="faq__item">
-        <button class="faq__question" type="button">
-          {{ .question }}
-        </button>
-        <div class="faq__answer">
-          <p>{{ .answer }}</p>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Частые вопросы</h2>
+
+      <div class="faq-grid">
+        <div class="faq-list">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Зачем платить, когда есть бесплатные сервисы?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Бесплатные сервисы часто экономят на&nbsp;безопасности и&nbsp;режут скорость, чтобы снизить нагрузку. Но&nbsp;главная проблема&nbsp;— скрытая монетизация: чтобы окупать серверы, они могут собирать вашу историю посещений и&nbsp;личные данные для продажи рекламным сетям. У&nbsp;нас вы&nbsp;платите за&nbsp;честный сервис, а&nbsp;не&nbsp;становитесь товаром</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Нужна локация, которой нет в&nbsp;списке</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Мы&nbsp;любим расширять локации. Напишите нам в&nbsp;<a href="https://t.me/pipunhelper" target="_blank" rel="noopener noreferrer" class="link-pink-inline">поддержку ↗</a>, какая именно страна вам нужна. Если наберется достаточно запросов и&nbsp;будет техническая возможность, мы&nbsp;добавим эту локацию в&nbsp;ближайшее время</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Как отменить подписку?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content"></p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Моего устройства нет в&nbsp;списке, можно ли&nbsp;к&nbsp;нему подключить?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-block">
+          <h3 class="support-title">Не&nbsp;нашли ответ на&nbsp;свой вопрос? Напишите нам&nbsp;— мы&nbsp;поможем</h3>
+          <p class="support-description">Мы&nbsp;не&nbsp;используем автоответчики и&nbsp;шаблонные скрипты. Отвечаем максимально быстро, но&nbsp;иногда нам тоже нужно отдохнуть. Если вы&nbsp;написали ночью&nbsp;— ответим утром первым делом и&nbsp;сразу по&nbsp;существу</p>
+          <a href="https://t.me/pipunhelper" target="_blank" rel="noopener noreferrer" class="link-pink">Написать в&nbsp;Телеграм ↗</a>
         </div>
       </div>
-      {{ end }}
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="blog" class="section">
+    <div class="container">
+      <h2 class="section-title">Полезные инструкции</h2>
+
+      <div class="articles-grid">
+        <div class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/youtube-premium.jpg" alt="YouTube Premium">
+          </div>
+          <div class="article-date">20.01.26</div>
+          <div class="article-title">Инструкция как купить YouTube Premium в&nbsp;2026 году</div>
+        </div>
+
+        <div class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/chatgpt.jpg" alt="ChatGPT">
+          </div>
+          <div class="article-date">16.01.26</div>
+          <div class="article-title">Как пользоваться ChatGPT и&nbsp;Midjourney из&nbsp;России</div>
+        </div>
+
+        <div class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/ps-store.jpg" alt="PS Store">
+          </div>
+          <div class="article-date">10.01.26</div>
+          <div class="article-title">Покупка в&nbsp;PS Store через Турцию: гайд по&nbsp;регистрации и&nbsp;оплате</div>
+        </div>
+
+        <div class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/steam.jpg" alt="Steam">
+          </div>
+          <div class="article-date">05.01.26</div>
+          <div class="article-title">Как сменить регион Steam на&nbsp;Казахстан или Турцию и&nbsp;пополнять баланс</div>
+        </div>
+      </div>
     </div>
   </section>
 </main>
+
 {{ end }}

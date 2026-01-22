@@ -1,119 +1,184 @@
-// Reset & Base Styles
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// CSS Grid Variables
+:root {
+  --columnGap: 24px;
+  --outsideGap: 48px;
+  --maxWidth: 1704px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --columnGap: 12px;
+    --outsideGap: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  :root {
+    --columnGap: 16px;
+    --outsideGap: 20px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  :root {
+    --columnGap: 16px;
+    --outsideGap: 32px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1599px) {
+  :root {
+    --columnGap: 24px;
+    --outsideGap: 36px;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --columnGap: 24px;
+    --outsideGap: 48px;
+  }
+}
+
+:root {
+  --containerWidth: calc(100vw - 2 * var(--outsideGap));
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --containerWidth: var(--maxWidth);
+  }
+}
+
+:root {
+  --col-width: calc((var(--containerWidth) - var(--columnGap) * 11) / 12);
+  --col-1: calc(var(--col-width) * 1);
+  --col-2: calc(var(--col-width) * 2 + var(--columnGap) * 1);
+  --col-3: calc(var(--col-width) * 3 + var(--columnGap) * 2);
+  --col-4: calc(var(--col-width) * 4 + var(--columnGap) * 3);
+  --col-5: calc(var(--col-width) * 5 + var(--columnGap) * 4);
+  --col-6: calc(var(--col-width) * 6 + var(--columnGap) * 5);
+  --col-7: calc(var(--col-width) * 7 + var(--columnGap) * 6);
+  --col-8: calc(var(--col-width) * 8 + var(--columnGap) * 7);
+  --col-9: calc(var(--col-width) * 9 + var(--columnGap) * 8);
+  --col-10: calc(var(--col-width) * 10 + var(--columnGap) * 9);
+  --col-11: calc(var(--col-width) * 11 + var(--columnGap) * 10);
+  --col-12: calc(var(--col-width) * 12 + var(--columnGap) * 11);
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
   font-family: $font-family;
-  background-color: $color-bg-dark;
-  color: $color-text;
-  line-height: 1.6;
-  min-height: 100vh;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 28px;
+  letter-spacing: -0.19px;
+  color: $white;
+  background-color: $black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+}
+
+// Typography - Desktop
+h1, h2, h3, h4, h5, h6, p {
+  /* Correct syntax for text-box-trim */
+  text-box: trim-both cap alphabetic;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 63px;
+  line-height: 60px;
+  letter-spacing: -1.26px;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 48px;
+  letter-spacing: -1px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 32px;
+  letter-spacing: -0.6px;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.48px;
+}
+
+.pricing-description,
+.step-description,
+.support-description,
+.article-title,
+.country-description,
+.device-name {
+  text-box: trim-both cap alphabetic;
+}
+
+// Typography - Mobile
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.32px;
+  }
+
+  h1 {
+    font-size: 34px;
+    line-height: 34px;
+    letter-spacing: -0.68px;
+  }
+
+  h2 {
+    font-size: 29px;
+    line-height: 30px;
+    letter-spacing: -0.58px;
+  }
+
+  h3 {
+    font-size: 21px;
+    line-height: 24px;
+    letter-spacing: -0.42px;
+  }
+
+  h4 {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.36px;
+  }
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
-  
-  &:hover {
-    color: $color-accent;
-  }
 }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-ul, ol {
-  list-style: none;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
-// Typography
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: 2.5rem;
-  
-  @media (min-width: $breakpoint-md) {
-    font-size: 3.5rem;
-  }
-}
-
-h2 {
-  font-size: 2rem;
-  
-  @media (min-width: $breakpoint-md) {
-    font-size: 2.5rem;
-  }
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-p {
-  color: $color-text-muted;
-}
-
-// Container
-.container {
-  width: 100%;
-  max-width: $container-max;
-  margin: 0 auto;
-  padding-left: 16px;
-  padding-right: 16px;
-  
-  @media (min-width: $breakpoint-md) {
-    padding-left: $spacing-xl;
-    padding-right: $spacing-xl;
-  }
-}
-
-// Section
-.section {
-  padding-top: $spacing-3xl;
-  padding-bottom: $spacing-3xl;
-}
-
-.section-title {
-  text-align: left;
-  margin-bottom: 24px;
-}
-
-// Visually hidden (for accessibility)
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
