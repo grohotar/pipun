@@ -97,15 +97,32 @@
     z-index: 11;
     flex-shrink: 0;
     pointer-events: auto;
+    position: relative;
 
     span {
       display: block;
-      width: 16px;
+      width: 18px;
       height: 2px;
       background: $white;
       border-radius: 2px;
       transition: all 0.3s;
       pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      &:nth-child(1) {
+        transform: translate(-50%, -50%) translateY(-6px);
+      }
+
+      &:nth-child(2) {
+        transform: translate(-50%, -50%);
+      }
+
+      &:nth-child(3) {
+        transform: translate(-50%, -50%) translateY(6px);
+      }
     }
   }
 }
@@ -159,7 +176,7 @@
 
       &.active {
         span:nth-child(1) {
-          transform: rotate(45deg) translate(5px, 5px);
+          transform: translate(-50%, -50%) rotate(45deg);
         }
 
         span:nth-child(2) {
@@ -167,7 +184,7 @@
         }
 
         span:nth-child(3) {
-          transform: rotate(-45deg) translate(5px, -5px);
+          transform: translate(-50%, -50%) rotate(-45deg);
         }
       }
     }

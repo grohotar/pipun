@@ -356,7 +356,7 @@
     line-height: 24px;
     letter-spacing: -0.19px;
     opacity: 0;
-    padding: 0 20px 20px 20px;
+    padding: 4px 20px 20px 20px;
   }
 
   &.active {
@@ -475,9 +475,14 @@
 }
 
 @media (max-width: 767px) {
+  .countries-grid {
+    margin-bottom: 12px;
+  }
+
   .countries-grid,
   .countries-grid-row {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .country-card {
@@ -497,6 +502,7 @@
       font-size: 14px;
       line-height: 16px;
       letter-spacing: -0.28px;
+      bottom: -4px;
     }
   }
 
