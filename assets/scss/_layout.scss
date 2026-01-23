@@ -305,7 +305,7 @@
   &-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 36px;
   }
 }
@@ -317,7 +317,7 @@
     &-header {
       flex-direction: column-reverse;
       align-items: flex-start;
-      gap: 16px;
+      gap: 12px;
     }
   }
 }
@@ -444,5 +444,129 @@
   .grid-overlay-container {
     padding: 0 $grid-padding-mobile;
     gap: $grid-gap-mobile;
+  }
+}
+
+// Article Page
+.article-page {
+  padding-top: 60px;
+  padding-bottom: 120px;
+
+  .article-header {
+    margin-bottom: 48px;
+
+    h1 {
+      margin-bottom: 24px;
+    }
+  }
+
+  .article-meta {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+    opacity: 0.6;
+  }
+
+  .article-featured-image {
+    margin-bottom: 48px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: $white;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .article-content {
+    max-width: 672px;
+    margin: 0 auto 48px;
+    font-size: 19px;
+    line-height: 28px;
+    letter-spacing: -0.19px;
+
+    h2 {
+      margin-top: 48px;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      margin-top: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 24px;
+    }
+
+    ul, ol {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
+  }
+
+  .article-footer {
+    max-width: 672px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .article-page {
+    padding-top: 28px;
+    padding-bottom: 84px;
+
+    .article-header {
+      margin-bottom: 28px;
+
+      h1 {
+        margin-bottom: 16px;
+      }
+    }
+
+    .article-meta {
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: -0.28px;
+    }
+
+    .article-featured-image {
+      margin-bottom: 28px;
+    }
+
+    .article-content {
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.32px;
+      margin-bottom: 28px;
+
+      h2 {
+        margin-top: 28px;
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        margin-top: 24px;
+        margin-bottom: 12px;
+      }
+
+      p {
+        margin-bottom: 16px;
+      }
+
+      ul, ol {
+        margin-bottom: 16px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+    }
   }
 }

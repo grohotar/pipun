@@ -23,6 +23,10 @@
   position: relative;
   height: 96px;
   box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
 
   .country-flag {
     width: 80px;
@@ -49,6 +53,28 @@
     line-height: 28px;
     letter-spacing: -0.48px;
     margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    transition: color 0.2s;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 9px;
+      height: 13px;
+      background-color: white;
+      mask-image: url('/images/arrow.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-image: url('/images/arrow.svg');
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      flex-shrink: 0;
+      transition: background-color 0.2s;
+    }
   }
 
   .country-description {
@@ -76,9 +102,22 @@
 
   // Reduced opacity for coming soon countries (except badge)
   &.coming-soon {
+    cursor: default;
+    pointer-events: none;
+    
     .country-flag,
     .country-info {
       opacity: 0.6;
+    }
+  }
+
+  &:not(.coming-soon):hover {
+    .country-name {
+      color: $pink;
+
+      &::after {
+        background-color: $pink;
+      }
     }
   }
 }
@@ -91,6 +130,11 @@
 }
 
 .device-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+
   .device-image {
     background: rgba(255, 255, 255, 0.145);
     border-radius: 24px;
@@ -115,6 +159,39 @@
     line-height: 32px;
     letter-spacing: -0.6px;
     text-align: center;
+    transition: color 0.2s;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 9px;
+      height: 16px;
+      background-color: white;
+      mask-image: url('/images/arrow.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-image: url('/images/arrow.svg');
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      flex-shrink: 0;
+      transition: background-color 0.2s;
+    }
+  }
+
+  &:hover {
+    .device-name {
+      color: $pink;
+
+      &::after {
+        background-color: $pink;
+      }
+    }
   }
 }
 
@@ -403,6 +480,11 @@
 }
 
 .article-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
   .article-image {
     background: $white;
     border-radius: 24px;
@@ -422,12 +504,21 @@
     line-height: 20px;
     letter-spacing: 0;
     margin-bottom: 8px;
+    transition: color 0.2s;
   }
 
   .article-title {
     font-size: 19px;
     line-height: 24px;
     letter-spacing: -0.19px;
+    transition: color 0.2s;
+  }
+
+  &:hover {
+    .article-date,
+    .article-title {
+      color: $pink;
+    }
   }
 }
 
@@ -490,6 +581,12 @@
       font-size: 18px;
       line-height: 22px;
       letter-spacing: -0.36px;
+      gap: 4px;
+
+      &::after {
+        width: 9px;
+        height: 10px;
+      }
     }
 
     .country-description {
@@ -515,6 +612,12 @@
       font-size: 21px;
       line-height: 24px;
       letter-spacing: -0.42px;
+      gap: 4px;
+
+      &::after {
+        width: 9px;
+        height: 12px;
+      }
     }
   }
 
