@@ -6,7 +6,7 @@ title = 'Скачать VPN на ПК для YouTube и Discord | Pipun от 149
   description = 'Скачать VPN для YouTube в 4K и игр. Пробный период всего 149₽/неделя. Работает на ПК, Android, iPhone. Протокол VLESS не режет скорость. Подключение за 2 минуты через Telegram.'
   keywords = 'скачать vpn, vpn для youtube, vpn на пк, vpn для android, vpn для discord, vpn для iphone, быстрый vpn, vless vpn, впн для игр, pipun vpn, впн для роблокса, vpn россия'
   author = 'Pipun VPN'
-  image = '/images/logo.svg'
+  image = '/site-preview.jpg'
 
 [markup]
   [markup.goldmark]
