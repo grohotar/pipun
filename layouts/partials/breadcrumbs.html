@@ -1,0 +1,7 @@
+<nav class="breadcrumbs">
+  <a href="/" class="breadcrumb-link">Главная</a>
+  {{ if not .IsHome }}
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-current">{{ if .Params.breadcrumb }}{{ .Params.breadcrumb }}{{ else }}{{ .Title }}{{ end }}</span>
+  {{ end }}
+</nav>

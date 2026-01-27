@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -128,6 +129,15 @@ document.addEventListener('DOMContentLoaded', function() {
         e.stopPropagation();
       }
     }, true);
+  }
+
+  // Initialize 3D Flag Coin
+  const flagIcon = document.getElementById('flagIcon');
+  if (flagIcon) {
+    const flagPath = flagIcon.getAttribute('data-flag');
+    if (flagPath) {
+      initFlagCoin(flagIcon, flagPath);
+    }
   }
 
   // Initialize Earth
@@ -469,5 +479,266 @@ function updateLabelVisibility(labels, camera) {
     // Smooth transition
     label.material.opacity += (targetOpacity - label.material.opacity) * 0.1;
     label.visible = label.material.opacity > 0.01;
+  });
+}
+
+// Initialize 3D Flag Coin
+async function initFlagCoin(container, flagPath) {
+  // Scene
+  const scene = new THREE.Scene();
+  
+  // Camera
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+  camera.position.set(0, 0, 3);
+  
+  // Renderer
+  const renderer = new THREE.WebGLRenderer({ 
+    antialias: true, 
+    alpha: true
+  });
+  
+  const isMobile = window.innerWidth <= 767;
+  const size = isMobile ? window.innerWidth - 32 : container.offsetWidth; // На мобиле: ширина экрана - padding
+  renderer.setSize(size, size);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio * 2, 3)); // Увеличил качество
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  container.appendChild(renderer.domElement);
+  
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 4.2);
+  directionalLight.position.set(5, 5, 5);
+  scene.add(directionalLight);
+  
+  const directionalLight2 = new THREE.DirectionalLight(0xffffff, 2.4);
+  directionalLight2.position.set(-5, -5, -5);
+  scene.add(directionalLight2);
+  
+  const rimLight = new THREE.DirectionalLight(0xffffff, 2.3);
+  rimLight.position.set(0, 5, -5);
+  scene.add(rimLight);
+  
+  const rimLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+  rimLight2.position.set(0, -5, 5);
+  scene.add(rimLight2);
+  directionalLight2.position.set(-5, -5, -5);
+  scene.add(directionalLight2);
+  
+  // Animation variables (declare early)
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetRotationX = 0;
+  let targetRotationY = 0;
+  let autoRotationSpeed = 0.5;
+  
+  // Float animation parameters
+  const floatParams = {
+    speedX: 1.2,
+    speedY: 0.8,
+    speedZ: 1.4,
+    amplitudeX: 0.15,
+    amplitudeY: 0,
+    amplitudeZ: 0.21
+  };
+  
+  // Light parameters
+  const lightParams = {
+    ambient: 1.8,
+    main: 4.2,
+    secondary: 2.4,
+    rim1: 2.3,
+    rim2: 1.5
+  };
+  
+  // Update light intensities
+  ambientLight.intensity = lightParams.ambient;
+  directionalLight.intensity = lightParams.main;
+  directionalLight2.intensity = lightParams.secondary;
+  rimLight.intensity = lightParams.rim1;
+  rimLight2.intensity = lightParams.rim2;
+  
+  // Model rotation parameters
+  const modelRotation = {
+    x: 90,
+    y: 0,
+    z: 77
+  };
+  
+  // Load coin model
+  const loader = new GLTFLoader();
+  let coin = null;
+  
+  try {
+    const gltf = await new Promise((resolve, reject) => {
+      loader.load('/images/flags/cc0_-_gold_coin_blank.glb', resolve, undefined, reject);
+    });
+    
+    coin = gltf.scene;
+    
+    // Load flag texture
+    const textureLoader = new THREE.TextureLoader();
+    const flagTexture = await new Promise((resolve, reject) => {
+      textureLoader.load(flagPath, resolve, undefined, reject);
+    });
+    
+    flagTexture.colorSpace = THREE.SRGBColorSpace;
+    flagTexture.wrapS = THREE.ClampToEdgeWrapping; // Убирает повтор
+    flagTexture.wrapT = THREE.ClampToEdgeWrapping; // Убирает повтор
+    flagTexture.anisotropy = renderer.capabilities.getMaxAnisotropy(); // Улучшает качество
+    
+    // UV adjustment parameters
+    const uvParams = {
+      scaleU: 1.7,
+      scaleV: 1.7,
+      offsetU: 0.86,
+      offsetV: 0.12,
+      rotation: 0,
+      flipY: false
+    };
+    
+    let meshes = [];
+    
+    // Apply texture to coin
+    coin.traverse((child) => {
+      if (child.isMesh) {
+        child.material = new THREE.MeshStandardMaterial({
+          map: flagTexture,
+          metalness: 0.66,
+          roughness: 0.4,
+          side: THREE.DoubleSide
+        });
+        
+        // Store original UVs
+        if (child.geometry.attributes.uv) {
+          const uvs = child.geometry.attributes.uv;
+          const originalUVs = [];
+          for (let i = 0; i < uvs.count; i++) {
+            originalUVs.push({
+              u: uvs.getX(i),
+              v: uvs.getY(i)
+            });
+          }
+          child.userData.originalUVs = originalUVs;
+          meshes.push(child);
+        }
+      }
+    });
+    
+    // Function to update UVs
+    function updateUVs() {
+      meshes.forEach(mesh => {
+        const uvs = mesh.geometry.attributes.uv;
+        const originalUVs = mesh.userData.originalUVs;
+        
+        for (let i = 0; i < uvs.count; i++) {
+          let u = originalUVs[i].u;
+          let v = originalUVs[i].v;
+          
+          if (uvParams.flipY) {
+            v = 1 - v;
+          }
+          
+          // Center
+          u -= 0.5;
+          v -= 0.5;
+          
+          // Rotate
+          if (uvParams.rotation !== 0) {
+            const angle = uvParams.rotation * Math.PI / 180;
+            const cos = Math.cos(angle);
+            const sin = Math.sin(angle);
+            const newU = u * cos - v * sin;
+            const newV = u * sin + v * cos;
+            u = newU;
+            v = newV;
+          }
+          
+          // Scale
+          u *= uvParams.scaleU;
+          v *= uvParams.scaleV;
+          
+          // Offset
+          u += uvParams.offsetU;
+          v += uvParams.offsetV;
+          
+          uvs.setXY(i, u, v);
+        }
+        uvs.needsUpdate = true;
+      });
+    }
+    
+    // Initial UV update
+    updateUVs();
+    
+    // Scale and position coin
+    const box = new THREE.Box3().setFromObject(coin);
+    const size = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const scale = 2 / maxDim;
+    coin.scale.setScalar(scale);
+    
+    // Center coin
+    box.setFromObject(coin);
+    const center = box.getCenter(new THREE.Vector3());
+    coin.position.sub(center);
+    
+    scene.add(coin);
+    
+  } catch (error) {
+    console.error('Failed to load coin model:', error);
+    return;
+  }
+  
+  // Mouse interaction
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouseY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    
+    targetRotationY = mouseX * 0.3;
+    targetRotationX = mouseY * 0.3;
+  });
+  
+  container.addEventListener('mouseleave', () => {
+    targetRotationX = 0;
+    targetRotationY = 0;
+  });
+  
+  // Animation
+  const clock = new THREE.Clock();
+  
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    if (coin) {
+      const time = clock.getElapsedTime();
+      
+      // Apply base rotation from GUI
+      const baseRotX = modelRotation.x * Math.PI / 180;
+      const baseRotZ = modelRotation.z * Math.PI / 180;
+      
+      // Плавное качание в обе стороны
+      const floatX = Math.sin(time * floatParams.speedX) * floatParams.amplitudeX; // Качание вверх-вниз
+      const floatY = Math.sin(time * floatParams.speedY) * floatParams.amplitudeY;  // Качание влево-вправо
+      
+      // Применяем все вращения
+      coin.rotation.x = baseRotX + targetRotationX + floatX;
+      coin.rotation.y = targetRotationY + floatY;
+      coin.rotation.z = baseRotZ;
+    }
+    
+    renderer.render(scene, camera);
+  }
+  
+  animate();
+  
+  // Handle resize
+  window.addEventListener('resize', () => {
+    const size = container.offsetWidth;
+    camera.aspect = 1;
+    camera.updateProjectionMatrix();
+    renderer.setSize(size, size);
   });
 }

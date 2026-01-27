@@ -1,0 +1,39 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="turkeyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E30A17;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C70000;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Turkey map outline -->
+  <path d="M 50 200 
+           L 100 180 L 150 170 L 200 165 L 250 160 L 300 155 
+           L 350 150 L 400 148 L 450 150 L 500 155 L 550 160 
+           L 600 170 L 650 180 L 700 190 L 730 200 L 750 210 
+           L 760 220 L 750 230 L 730 240 L 700 250 L 650 260 
+           L 600 265 L 550 268 L 500 270 L 450 268 L 400 265 
+           L 350 260 L 300 255 L 250 250 L 200 245 L 150 240 
+           L 100 230 L 70 220 L 50 210 Z" 
+        fill="url(#turkeyGradient)" 
+        stroke="#FFFFFF" 
+        stroke-width="2"
+        filter="url(#glow)"
+        opacity="0.9"/>
+  
+  <!-- Star -->
+  <path d="M 300 200 L 310 220 L 332 220 L 315 233 L 322 253 L 300 240 L 278 253 L 285 233 L 268 220 L 290 220 Z"
+        fill="#FFFFFF"
+        opacity="0.95"/>
+  
+  <!-- Crescent -->
+  <circle cx="350" cy="200" r="35" fill="#FFFFFF" opacity="0.95"/>
+  <circle cx="360" cy="200" r="30" fill="url(#turkeyGradient)"/>
+</svg>

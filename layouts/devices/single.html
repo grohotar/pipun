@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ partial "header.html" . }}
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      {{ partial "breadcrumbs.html" . }}
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <h1>{{ .Title }}</h1>
+          <p class="hero-description">{{ .Description }}</p>
+          <a href="https://t.me/pipun_bot?start=main" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="section article-page">
+    <div class="container">
+      <div class="article-content">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ end }}

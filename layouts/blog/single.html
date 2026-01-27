@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{ partial "header.html" . }}
+
+<main>
+  <section class="article-page">
+    <div class="container">
+      {{ partial "breadcrumbs.html" . }}
+      
+      <div class="article-header">
+        <h1>{{ .Title }}</h1>
+        <div class="article-meta">{{ .Date.Format "02.01.2006" }}</div>
+      </div>
+
+      {{ if .Params.image }}
+      <div class="article-featured-image">
+        <img src="{{ .Params.image }}" alt="{{ .Title }}">
+      </div>
+      {{ end }}
+
+      <div class="article-content">
+        {{ .Content }}
+      </div>
+
+      <div class="article-footer">
+        <a href="/" class="button">← Вернуться на главную</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ end }}

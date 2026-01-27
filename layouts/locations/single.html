@@ -1,0 +1,393 @@
+{{ define "main" }}
+{{ partial "header.html" . }}
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      {{ partial "breadcrumbs.html" . }}
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <h1>{{ .Title }}</h1>
+          <p class="hero-description">{{ .Description }}</p>
+          <a href="https://t.me/pipun_bot?start=main" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
+        </div>
+        {{ if .Params.flagIcon }}
+        <div class="hero-flag-icon" id="flagIcon" data-flag="{{ .Params.flagIcon }}"></div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Section -->
+  {{ if .Params.features }}
+  <section class="section why-turkey-section">
+    <div class="container">
+      <h2 class="section-title">{{ .Params.whyTitle | default "Зачем нужен сервер в Турции?" }}</h2>
+
+      <div class="features-grid">
+        {{ range .Params.features }}
+        <div class="feature-card">
+          <div class="feature-icon">
+            {{ if eq .icon "youtube" }}
+            <img src="/images/youtube.svg" alt="{{ .title }}">
+            {{ else if eq .icon "game" }}
+            <img src="/images/game.svg" alt="{{ .title }}">
+            {{ else if eq .icon "music-playlist" }}
+            <img src="/images/music-playlist.svg" alt="{{ .title }}">
+            {{ else if eq .icon "driver" }}
+            <img src="/images/driver.svg" alt="{{ .title }}">
+            {{ else if eq .icon "cloud-add" }}
+            <img src="/images/cloud-add.svg" alt="{{ .title }}">
+            {{ else if eq .icon "cloud-connection" }}
+            <img src="/images/cloud-connection.svg" alt="{{ .title }}">
+            {{ else if eq .icon "bank" }}
+            <img src="/images/vuesax/bold/bank.svg" alt="{{ .title }}">
+            {{ else if eq .icon "cpu" }}
+            <img src="/images/vuesax/bold/cpu.svg" alt="{{ .title }}">
+            {{ else if eq .icon "unlimited" }}
+            <img src="/images/unlimited.svg" alt="{{ .title }}">
+            {{ else if eq .icon "arrow-square" }}
+            <img src="/images/arrow-square.svg" alt="{{ .title }}">
+            {{ end }}
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">{{ .title }}</h3>
+            <p class="feature-description">{{ .description | markdownify }}</p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Steps Section -->
+  <section id="steps" class="section steps-section">
+    <div class="container">
+      <h2 class="section-title">Подключение за&nbsp;пару минут</h2>
+
+      <div class="steps-wrapper">
+        <div class="steps-image">
+          <img src="/images/iphones-mockup.png" alt="Подключение VPN на iPhone за 2 минуты через Telegram бота">
+        </div>
+        
+        <div class="steps-grid">
+          <div class="step">
+            <h3 class="step-title">1. Перейти в&nbsp;Телеграм</h3>
+            <p class="step-description">Запустите бота, выберите подходящий тариф и&nbsp;оплатите его любой российской картой или криптовалютой прямо в&nbsp;чате</p>
+          </div>
+
+          <div class="step">
+            <h3 class="step-title">2. Получить ключ доступа</h3>
+            <p class="step-description">После оплаты бот пришлет ваш уникальный ключ и&nbsp;инструкцию. В&nbsp;коде уже зашиты сложные настройки серверов, поэтому вам не&nbsp;придется прописывать вручную</p>
+          </div>
+
+          <div class="step">
+            <h3 class="step-title">3. Включить VPN</h3>
+            <p class="step-description">Скачайте приложение и&nbsp;вставьте в&nbsp;него полученный ключ. Программа сама всё настроит за&nbsp;секунду. Нажмите кнопку на&nbsp;главном экране&nbsp;— всё готово</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Devices Section -->
+  <section id="devices" class="section">
+    <div class="container">
+      <h2 class="section-title">Работает на&nbsp;всех устройствах</h2>
+
+      <div class="devices-grid">
+        <a href="/iphone/" class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/iphone.png" alt="VPN для iPhone - быстрая настройка">
+          </div>
+          <div class="device-name">IPhone</div>
+        </a>
+
+        <a href="/android/" class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/android.png" alt="VPN для Android - простое подключение">
+          </div>
+          <div class="device-name">Android</div>
+        </a>
+
+        <a href="/mac/" class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/mac.png" alt="VPN для Mac - работает на macOS">
+          </div>
+          <div class="device-name">Mac</div>
+        </a>
+
+        <a href="/windows/" class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/windows.png" alt="VPN для Windows - поддержка всех версий">
+          </div>
+          <div class="device-name">Windows</div>
+        </a>
+
+        <a href="/appletv/" class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/appletv.png" alt="VPN для Apple TV - смотрите контент без ограничений">
+          </div>
+          <div class="device-name">Apple TV</div>
+        </a>
+
+        <a href="/androidtv/" class="device-card">
+          <div class="device-image">
+            <img src="/images/devices/androidtv.png" alt="VPN для Android TV - доступ к заблокированным сервисам">
+          </div>
+          <div class="device-name">Android TV</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="section pricing-section">
+    <div class="container">
+      <h2 class="section-title">Много вариантов подписок</h2>
+    </div>
+
+    <div class="pricing-wrapper">
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">1 неделя</h3>
+            <p class="pricing-description">Проверить скорость и&nbsp;убедиться, что всё работает на&nbsp;вашем устройстве</p>
+          </div>
+          <a href="https://t.me/pipun_bot?start=1week" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;149₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">1 месяц</h3>
+            <p class="pricing-description">Базовый вариант, если не&nbsp;хотите оплачивать надолго вперед</p>
+          </div>
+          <a href="https://t.me/pipun_bot?start=1month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;289₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">3 месяца</h3>
+            <p class="pricing-description">Позволяет сэкономить бюджет, не&nbsp;оплачивая сразу целый год</p>
+          </div>
+          <a href="https://t.me/pipun_bot?start=3month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;789₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">6 месяцев</h3>
+            <p class="pricing-description">Лучший выбор, если нужна стабильность без частых продлений доступа</p>
+          </div>
+          <a href="https://t.me/pipun_bot?start=6month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;1489₽</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">12 месяцев</h3>
+            <p class="pricing-description">Самый выгодный тариф. Лучшая цена в&nbsp;пересчете на&nbsp;месяц</p>
+          </div>
+          <a href="https://t.me/pipun_bot?start=12month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;2689₽</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countries Section -->
+  <section id="locations" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Все страны в&nbsp;одной подписке</h2>
+        <a href="https://status.pavuka.net/status/pipun" target="_blank" rel="noopener noreferrer" class="link-pink" style="position: relative; z-index: 10;">Статус серверов ↗</a>
+      </div>
+
+      <div class="countries-grid">
+        <a href="/finland/" class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/finland.svg" alt="VPN сервер в Финляндии с минимальным пингом">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Финляндия</div>
+            <div class="country-description">Минимальный пинг</div>
+          </div>
+        </a>
+
+        <a href="/germany/" class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/germany.svg" alt="VPN сервер в Германии для YouTube 4K">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Германия</div>
+            <div class="country-description">Youtube 4K 60fps</div>
+          </div>
+        </a>
+
+        <a href="/turkey/" class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/turkey.svg" alt="Турецкий VPN для YouTube и PS Store">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Турция</div>
+            <div class="country-description">YouTube, PS Store</div>
+          </div>
+        </a>
+
+        <a href="/latvia/" class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/latvia.svg" alt="VPN сервер в Латвии без блокировок">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Латвия</div>
+            <div class="country-description">Минимум блокировок</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="countries-grid-row">
+        <a href="/kazakhstan/" class="country-card">
+          <div class="country-flag">
+            <img src="/images/flags/kazakhstan.svg" alt="VPN сервер в Казахстане для доступа к банкам">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Казахстан</div>
+            <div class="country-description">Доступ к&nbsp;банкам</div>
+          </div>
+        </a>
+
+        <div class="country-card coming-soon">
+          <div class="country-flag">
+            <img src="/images/flags/india.svg" alt="VPN сервер в Индии с низкими ценами - скоро">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Индия</div>
+            <div class="country-description">Низкие цены</div>
+          </div>
+          <div class="badge">Скоро в&nbsp;подписке</div>
+        </div>
+
+        <div class="country-card coming-soon">
+          <div class="country-flag">
+            <img src="/images/flags/usa.svg" alt="VPN сервер в США для Midjourney и нейросетей - скоро">
+          </div>
+          <div class="country-info">
+            <div class="country-name">США</div>
+            <div class="country-description">ChatGPT, Claude, Netflix</div>
+          </div>
+          <div class="badge">Скоро в&nbsp;подписке</div>
+        </div>
+
+        <div class="country-card coming-soon">
+          <div class="country-flag">
+            <img src="/images/flags/netherlands.svg" alt="VPN сервер в Нидерландах - скоро">
+          </div>
+          <div class="country-info">
+            <div class="country-name">Нидерланды</div>
+            <div class="country-description">Высокоскоростной хаб</div>
+          </div>
+          <div class="badge">Скоро в&nbsp;подписке</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Частые вопросы</h2>
+
+      <div class="faq-grid">
+        <div class="faq-list">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Зачем платить, когда есть бесплатные сервисы?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Бесплатные сервисы часто экономят на&nbsp;безопасности и&nbsp;режут скорость, чтобы снизить нагрузку. Но&nbsp;главная проблема&nbsp;— скрытая монетизация: чтобы окупать серверы, они могут собирать вашу историю посещений и&nbsp;личные данные для продажи рекламным сетям. У&nbsp;нас вы&nbsp;платите за&nbsp;честный сервис, а&nbsp;не&nbsp;становитесь товаром</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Нужна локация, которой нет в&nbsp;списке</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Мы&nbsp;любим расширять локации. Напишите нам в&nbsp;<a href="https://t.me/pipunhelper" target="_blank" rel="noopener noreferrer" class="link-pink-inline">поддержку ↗</a>, какая именно страна вам нужна. Если наберется достаточно запросов и&nbsp;будет техническая возможность, мы&nbsp;добавим эту локацию в&nbsp;ближайшее время</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Как отменить подписку?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Мы&nbsp;не&nbsp;храним данные ваших карт и&nbsp;не&nbsp;списываем деньги автоматически. Никаких скрытых платежей: когда подписка будет заканчиваться, бот просто пришлет напоминание. Вы&nbsp;сами решаете, продлевать доступ или нет</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Моего устройства нет в&nbsp;списке, можно ли&nbsp;к&nbsp;нему подключить?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Скорее всего, да. Наш протокол поддерживает почти все современные системы, включая Linux и&nbsp;роутеры (например, Keenetic или OpenWRT). Напишите в&nbsp;нашу поддержку&nbsp;— мы&nbsp;проверим совместимость вашего устройства и, если это технически возможно, пришлем ручную инструкцию по&nbsp;настройке</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-block">
+          <h3 class="support-title">Не&nbsp;нашли ответ на&nbsp;свой вопрос? Напишите нам&nbsp;— мы&nbsp;поможем</h3>
+          <p class="support-description">Мы&nbsp;не&nbsp;используем автоответчики и&nbsp;шаблонные скрипты. Отвечаем максимально быстро, но&nbsp;иногда нам тоже нужно отдохнуть. Если вы&nbsp;написали ночью&nbsp;— ответим утром первым делом и&nbsp;сразу по&nbsp;существу</p>
+          <a href="https://t.me/pipunhelper" target="_blank" rel="noopener noreferrer" class="link-pink">Написать в&nbsp;Телеграм ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="blog" class="section">
+    <div class="container">
+      <h2 class="section-title">Полезные инструкции</h2>
+
+      <div class="articles-grid">
+        <a href="/youtube-premium-2026/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/youtube-premium.jpg" alt="Как купить YouTube Premium в России через VPN в 2026 году">
+          </div>
+          <div class="article-date">20.01.26</div>
+          <div class="article-title">Инструкция как купить YouTube Premium в&nbsp;2026 году</div>
+        </a>
+
+        <a href="/chatgpt-midjourney-russia/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/chatgpt.jpg" alt="Доступ к ChatGPT и Midjourney из России через VPN">
+          </div>
+          <div class="article-date">16.01.26</div>
+          <div class="article-title">Как пользоваться ChatGPT и&nbsp;Midjourney из&nbsp;России</div>
+        </a>
+
+        <a href="/ps-store-turkey/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/ps-store.jpg" alt="Покупка игр в PS Store через турецкий VPN">
+          </div>
+          <div class="article-date">10.01.26</div>
+          <div class="article-title">Покупка в&nbsp;PS Store через Турцию: гайд по&nbsp;регистрации и&nbsp;оплате</div>
+        </a>
+
+        <a href="/steam-region-change/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/steam.jpg" alt="Смена региона Steam на Казахстан или Турцию через VPN">
+          </div>
+          <div class="article-date">05.01.26</div>
+          <div class="article-title">Как сменить регион Steam на&nbsp;Казахстан или Турцию и&nbsp;пополнять баланс</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ end }}
