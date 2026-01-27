@@ -5,6 +5,7 @@ flag: "/images/flags/finland.svg"
 flagIcon: "/images/flags/fl.png"
 url: "/finland/"
 breadcrumb: "Финский VPN"
+keywords: "vpn финляндия, финский vpn, vpn хельсинки, vpn для финляндии, низкий пинг vpn, быстрый vpn финляндия, vpn сервер финляндия"
 features:
   - icon: "driver"
     title: "Минимальный пинг"

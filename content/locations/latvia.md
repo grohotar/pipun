@@ -5,6 +5,7 @@ flag: "/images/flags/latvia.svg"
 flagIcon: "/images/flags/lat.png"
 url: "/latvia/"
 breadcrumb: "Латвийский VPN"
+keywords: "vpn латвия, латвийский vpn, vpn рига, vpn для латвии, быстрый vpn латвия, vpn сервер латвия, чистые ip vpn"
 features:
   - icon: "driver"
     title: "Минимальный пинг"

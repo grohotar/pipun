@@ -5,6 +5,7 @@ flag: "/images/flags/turkey.svg"
 flagIcon: "/images/flags/TR.png"
 url: "/turkey/"
 breadcrumb: "Турецкий VPN"
+keywords: "турецкий vpn, vpn турция, vpn для youtube premium, vpn для steam турция, vpn для ps store, дешевый vpn турция, vpn стамбул, турецкий сервер vpn"
 features:
   - icon: "youtube"
     title: "YouTube Premium"

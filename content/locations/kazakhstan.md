@@ -5,6 +5,7 @@ flag: "/images/flags/kazakhstan.svg"
 flagIcon: "/images/flags/kz.png"
 url: "/kazakhstan/"
 breadcrumb: "Казахстанский VPN"
+keywords: "vpn казахстан, казахстанский vpn, vpn для банков казахстан, vpn алматы, vpn для kaspi, vpn для steam казахстан, vpn астана"
 features:
   - icon: "bank"
     title: "Доступ к банкам"
