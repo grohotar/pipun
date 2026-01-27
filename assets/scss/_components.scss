@@ -2,18 +2,18 @@
 .countries-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: var(--columnGap);
   margin-bottom: 24px;
 
   &-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: var(--columnGap);
   }
 }
 
 .country-card {
-  background: rgba(255, 255, 255, 0.145);
+  background: $white-alpha-145;
   border-radius: 88px;
   padding: 8px;
   display: flex;
@@ -136,7 +136,7 @@
   display: block;
 
   .device-image {
-    background: rgba(255, 255, 255, 0.145);
+    background: $white-alpha-145;
     border-radius: 24px;
     aspect-ratio: 4 / 3;
     width: 100%;
@@ -199,7 +199,7 @@
 .steps-wrapper {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
+  gap: var(--columnGap);
 }
 
 .steps-image {
@@ -215,20 +215,20 @@
     object-fit: contain;
     position: relative;
     z-index: 1;
-    filter: drop-shadow(0 0 80px rgba(255, 31, 165, 0.4)) 
-            drop-shadow(0 0 120px rgba(255, 31, 165, 0.3));
+    filter: drop-shadow(0 0 80px $pink-alpha-40) 
+            drop-shadow(0 0 120px $pink-alpha-30);
     animation: glowFloat 6s ease-in-out infinite;
   }
 }
 
 @keyframes glowFloat {
   0%, 100% {
-    filter: drop-shadow(0 0 80px rgba(255, 31, 165, 0.4)) 
-            drop-shadow(0 0 120px rgba(255, 31, 165, 0.3));
+    filter: drop-shadow(0 0 80px $pink-alpha-40) 
+            drop-shadow(0 0 120px $pink-alpha-30);
   }
   50% {
-    filter: drop-shadow(0 0 100px rgba(255, 31, 165, 0.5)) 
-            drop-shadow(0 0 140px rgba(255, 31, 165, 0.4));
+    filter: drop-shadow(0 0 100px $pink-alpha-50) 
+            drop-shadow(0 0 140px $pink-alpha-40);
   }
 }
 
@@ -237,7 +237,6 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
-  width: 556px;
 }
 
 .step {
@@ -283,55 +282,128 @@
   overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
   
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
+
+  &:active {
+    cursor: grabbing;
+    user-select: none;
+  }
+}
+
+@media (max-width: 1599px) {
+  .pricing-wrapper {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .pricing-wrapper {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .pricing-wrapper {
+    padding-right: 0;
+  }
 }
 
 .pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  padding: 0 $grid-padding-1600;
-  max-width: calc($grid-max-width + ($grid-padding-1600 * 2));
-  margin: 0 auto;
+  display: flex;
+  gap: var(--columnGap);
+  padding-left: $grid-padding-1600;
+  padding-right: 0;
+  width: fit-content;
+
+  &::after {
+    content: '';
+    display: block;
+    min-width: $grid-padding-1600;
+    margin-left: calc(var(--columnGap) * -1);
+    flex-shrink: 0;
+  }
 }
 
 @media (max-width: 1599px) {
   .pricing-grid {
-    padding: 0 $grid-padding-1200;
+    padding-left: $grid-padding-1200;
+    padding-right: 0;
+
+    &::after {
+      min-width: $grid-padding-1200;
+    }
   }
 }
 
 @media (max-width: 1199px) {
   .pricing-grid {
-    padding: 0 $grid-padding-992;
+    padding-left: $grid-padding-992;
+    padding-right: 0;
+
+    &::after {
+      min-width: $grid-padding-992;
+    }
   }
 }
 
 @media (max-width: 991px) {
   .pricing-grid {
-    padding: 0 $grid-padding-768;
+    padding-left: $grid-padding-768;
+    padding-right: 0;
+
+    &::after {
+      min-width: $grid-padding-768;
+    }
   }
 }
 
 @media (max-width: 767px) {
+  .pricing-wrapper {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-padding-left: 16px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   .pricing-grid {
-    padding: 0 $grid-padding-mobile;
+    display: flex;
+    gap: 16px;
+    padding-left: 16px;
+    padding-right: 0;
+    width: auto;
+
+    &::after {
+      min-width: 16px;
+      margin-left: -16px;
+    }
+  }
+
+  .pricing-card:last-child {
+    margin-right: 0;
   }
 }
 
 .pricing-card {
-  background: rgba(255, 255, 255, 0.145);
+  flex: 0 0 calc((100% - var(--columnGap) * 3) / 4);
+  background: $white-alpha-145;
   border-radius: 24px;
   padding: 24px;
-  min-width: 324px;
   height: 222px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  scroll-snap-align: start;
 
   .pricing-header {
   }
@@ -359,7 +431,7 @@
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
+  gap: var(--columnGap);
 }
 
 .faq-list {
@@ -370,7 +442,7 @@
 }
 
 .accordion-item {
-  background: rgba(255, 255, 255, 0.145);
+  background: $white-alpha-145;
   border-radius: 24px;
   cursor: pointer;
   position: relative;
@@ -476,7 +548,7 @@
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: var(--columnGap);
 }
 
 .article-card {
@@ -533,10 +605,6 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .pricing-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .articles-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -554,10 +622,6 @@
 
   .faq-grid {
     grid-template-columns: 1fr;
-  }
-
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .articles-grid {
@@ -652,28 +716,9 @@
     }
   }
 
-  .pricing-wrapper {
-    margin-left: 16px;
-  }
-
-  .pricing-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding: 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
   .pricing-card {
-    flex-shrink: 0;
+    flex: 0 0 var(--col-8);
     width: var(--col-8);
-    min-width: unset;
     scroll-snap-align: start;
 
     .pricing-title {

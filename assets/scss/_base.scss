@@ -7,44 +7,42 @@
 }
 
 // CSS Grid Variables
-:root {
-  --columnGap: 24px;
-  --outsideGap: 48px;
-  --maxWidth: 1704px;
-}
-
-@media (max-width: 767px) {
+@supports (display: grid) {
   :root {
-    --columnGap: 12px;
-    --outsideGap: 16px;
+    --maxWidth: 1792px !important;
   }
-}
 
-@media (min-width: 768px) and (max-width: 991px) {
-  :root {
-    --columnGap: 16px;
-    --outsideGap: 20px;
+  @media (max-width: 767px) {
+    :root {
+      --columnGap: 15px;
+      --outsideGap: 16px;
+    }
   }
-}
 
-@media (min-width: 992px) and (max-width: 1199px) {
-  :root {
-    --columnGap: 16px;
-    --outsideGap: 32px;
+  @media (min-width: 768px) {
+    :root {
+      --columnGap: 16px;
+      --outsideGap: 20px;
+    }
   }
-}
 
-@media (min-width: 1200px) and (max-width: 1599px) {
-  :root {
-    --columnGap: 24px;
-    --outsideGap: 36px;
+  @media (min-width: 992px) {
+    :root {
+      --outsideGap: 30px;
+    }
   }
-}
 
-@media (min-width: 1600px) {
-  :root {
-    --columnGap: 24px;
-    --outsideGap: 48px;
+  @media (min-width: 1200px) {
+    :root {
+      --columnGap: 24px;
+      --outsideGap: 40px !important;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    :root {
+      --outsideGap: 60px !important;
+    }
   }
 }
 
@@ -135,7 +133,11 @@ h4 {
 .support-description,
 .article-title,
 .country-description,
-.device-name {
+.device-name,
+.footer-info p,
+.footer-info a,
+.footer-legal a,
+.footer-column nav a {
   text-box: trim-both cap alphabetic;
 }
 

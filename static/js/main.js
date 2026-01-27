@@ -79,6 +79,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // Drag scroll for pricing cards
+  const pricingWrapper = document.querySelector('.pricing-wrapper');
+  if (pricingWrapper) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    pricingWrapper.addEventListener('mousedown', (e) => {
+      isDown = true;
+      pricingWrapper.style.cursor = 'grabbing';
+      startX = e.pageX - pricingWrapper.offsetLeft;
+      scrollLeft = pricingWrapper.scrollLeft;
+      e.preventDefault();
+    });
+
+    pricingWrapper.addEventListener('mouseleave', () => {
+      isDown = false;
+      pricingWrapper.style.cursor = 'grab';
+    });
+
+    pricingWrapper.addEventListener('mouseup', () => {
+      isDown = false;
+      pricingWrapper.style.cursor = 'grab';
+    });
+
+    pricingWrapper.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - pricingWrapper.offsetLeft;
+      const walk = (x - startX) * 2;
+      pricingWrapper.scrollLeft = scrollLeft - walk;
+    });
+
+    // Prevent click on links when dragging
+    let hasMoved = false;
+    pricingWrapper.addEventListener('mousedown', () => {
+      hasMoved = false;
+    });
+    
+    pricingWrapper.addEventListener('mousemove', () => {
+      if (isDown) hasMoved = true;
+    });
+
+    pricingWrapper.addEventListener('click', (e) => {
+      if (hasMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  }
+
   // Initialize Earth
   const globeContainer = document.getElementById('globeViz');
   if (globeContainer) {
