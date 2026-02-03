@@ -246,6 +246,8 @@
 
   .hero-content {
     max-width: 672px;
+    position: relative;
+    z-index: 2;
   }
 
   h1 {
@@ -262,6 +264,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1;
     // 6 columns = (max-width - 2*padding) / 12 * 6 + 5*gap
     width: calc((#{$grid-max-width} - #{$grid-padding-1600} * 2) / 12 * 6 + #{$grid-gap-1600} * 5);
     height: calc((#{$grid-max-width} - #{$grid-padding-1600} * 2) / 12 * 6 + #{$grid-gap-1600} * 5);
@@ -279,6 +282,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1;
     width: calc((#{$grid-max-width} - #{$grid-padding-1600} * 2) / 12 * 6 + #{$grid-gap-1600} * 5);
     height: calc((#{$grid-max-width} - #{$grid-padding-1600} * 2) / 12 * 6 + #{$grid-gap-1600} * 5);
     display: flex;
@@ -307,7 +311,7 @@
   }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1100px) {
   .hero {
     .hero-globe {
       position: relative;
@@ -712,7 +716,7 @@
 }
 
 .footer-legal {
-  grid-column: 1 / 4;
+  grid-column: 1 / 6;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -999,6 +1003,181 @@
 
     img {
       max-width: 300px;
+    }
+  }
+}
+
+
+/* Privacy Policy Page */
+.privacy-section {
+  padding: 40px 0 120px;
+  
+  @media (max-width: 767px) {
+    padding: 16px 0 80px;
+  }
+}
+
+.privacy-wrapper {
+  max-width: var(--containerWidth);
+  margin: 0 auto;
+}
+
+.privacy-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: $pink;
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: -0.19px;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: opacity 0.2s;
+  
+  @media (max-width: 767px) {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.16px;
+    margin-bottom: 16px;
+  }
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  svg {
+    width: 13px;
+    height: 13px;
+    
+    @media (max-width: 767px) {
+      width: 11px;
+      height: 11px;
+    }
+  }
+}
+
+.privacy-title {
+  font-size: 63px;
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: -1.26px;
+  color: $white;
+  margin-bottom: 72px;
+  
+  @media (max-width: 767px) {
+    font-size: 34px;
+    line-height: 34px;
+    letter-spacing: -0.68px;
+    margin-bottom: 48px;
+  }
+}
+
+.privacy-content-wrapper {
+  display: grid;
+  grid-template-columns: var(--col-3) var(--col-6);
+  gap: var(--columnGap);
+  
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.privacy-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+  
+  @media (max-width: 767px) {
+    position: static;
+    gap: 11px;
+  }
+}
+
+.privacy-nav-link {
+  color: $pink;
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: -0.19px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  
+  @media (max-width: 767px) {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.16px;
+  }
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.privacy-content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  
+  @media (max-width: 767px) {
+    gap: 36px;
+  }
+}
+
+.privacy-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.privacy-section-title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.48px;
+  color: $white;
+  
+  @media (max-width: 767px) {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.36px;
+  }
+}
+
+.privacy-text {
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: -0.19px;
+  color: $white;
+  margin: 0;
+  
+  @media (max-width: 767px) {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.16px;
+  }
+}
+
+.privacy-list {
+  list-style: disc;
+  padding-left: 32px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  
+  li {
+    font-size: 19px;
+    line-height: 24px;
+    letter-spacing: -0.19px;
+    color: $white;
+    
+    @media (max-width: 767px) {
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.16px;
     }
   }
 }

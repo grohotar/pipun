@@ -1,6 +1,29 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+let threeModulePromise;
+let orbitControlsPromise;
+let gltfLoaderPromise;
+
+async function loadThree() {
+  if (!threeModulePromise) {
+    threeModulePromise = import('three');
+  }
+  return threeModulePromise;
+}
+
+async function loadOrbitControls() {
+  if (!orbitControlsPromise) {
+    orbitControlsPromise = import('three/addons/controls/OrbitControls.js');
+  }
+  const module = await orbitControlsPromise;
+  return module.OrbitControls;
+}
+
+async function loadGLTFLoader() {
+  if (!gltfLoaderPromise) {
+    gltfLoaderPromise = import('three/addons/loaders/GLTFLoader.js');
+  }
+  const module = await gltfLoaderPromise;
+  return module.GLTFLoader;
+}
 
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -148,6 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function initEarth(container) {
+  const THREE = await loadThree();
+  const OrbitControls = await loadOrbitControls();
+
   // Scene
   const scene = new THREE.Scene();
   
@@ -161,12 +187,25 @@ async function initEarth(container) {
     alpha: true,
     powerPreference: 'high-performance'
   });
-  renderer.setSize(660, 660);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio * 1.5, 3));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
   container.appendChild(renderer.domElement);
+
+  function resizeRenderer() {
+    const rect = container.getBoundingClientRect();
+    const fallbackSize = 660;
+    const width = rect.width || fallbackSize;
+    const height = rect.height || fallbackSize;
+    const size = Math.min(width, height);
+    renderer.setSize(size, size);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio * 1.5, 3));
+    camera.aspect = 1;
+    camera.updateProjectionMatrix();
+  }
+
+  resizeRenderer();
+  window.addEventListener('resize', resizeRenderer);
   
   // Lighting
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
@@ -298,7 +337,11 @@ async function initEarth(container) {
   // Load countries data and add borders + labels
   try {
     console.log('Loading country data...');
-    const response = await fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson');
+    const localUrl = '/data/ne_110m_admin_0_countries.geojson';
+    let response = await fetch(localUrl);
+    if (!response.ok) {
+      response = await fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson');
+    }
     const data = await response.json();
     console.log('Country data loaded:', data.features.length, 'countries');
     
@@ -309,7 +352,7 @@ async function initEarth(container) {
       const name = props.NAME || props.ADMIN || props.name;
       
       // Add borders
-      addCountryBorders(earth, feature);
+      addCountryBorders(earth, feature, THREE);
       
       // Calculate centroid for label
       let labelLat, labelLng;
@@ -326,7 +369,7 @@ async function initEarth(container) {
       }
       
       if (name && labelLat !== undefined && labelLng !== undefined) {
-        const label = addLabel(scene, name, labelLat, labelLng, earth);
+        const label = addLabel(scene, name, labelLat, labelLng, earth, THREE);
         if (label) {
           labels.push(label);
           labelCount++;
@@ -357,7 +400,7 @@ async function initEarth(container) {
     atmosphere.rotation.y += delta * rotationSpeed;
     
     // Update label visibility based on camera position
-    updateLabelVisibility(labels, camera);
+    updateLabelVisibility(labels, camera, THREE);
     
     controls.update();
     renderer.render(scene, camera);
@@ -366,7 +409,7 @@ async function initEarth(container) {
   animate();
 }
 
-function addCountryBorders(earth, feature) {
+function addCountryBorders(earth, feature, THREE) {
   const coords = feature.geometry.coordinates;
   const radius = 0.851; // Slightly above earth surface
   
@@ -406,7 +449,7 @@ function addCountryBorders(earth, feature) {
   }
 }
 
-function addLabel(scene, text, lat, lng, earth) {
+function addLabel(scene, text, lat, lng, earth, THREE) {
   // Create canvas for text
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
@@ -452,7 +495,7 @@ function addLabel(scene, text, lat, lng, earth) {
   return sprite;
 }
 
-function updateLabelVisibility(labels, camera) {
+function updateLabelVisibility(labels, camera, THREE) {
   labels.forEach(label => {
     // Get label position in world space
     const labelWorldPos = new THREE.Vector3();
@@ -484,6 +527,9 @@ function updateLabelVisibility(labels, camera) {
 
 // Initialize 3D Flag Coin
 async function initFlagCoin(container, flagPath) {
+  const THREE = await loadThree();
+  const GLTFLoader = await loadGLTFLoader();
+
   // Scene
   const scene = new THREE.Scene();
   
@@ -523,8 +569,6 @@ async function initFlagCoin(container, flagPath) {
   const rimLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
   rimLight2.position.set(0, -5, 5);
   scene.add(rimLight2);
-  directionalLight2.position.set(-5, -5, -5);
-  scene.add(directionalLight2);
   
   // Animation variables (declare early)
   let mouseX = 0;

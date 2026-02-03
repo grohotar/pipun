@@ -5,6 +5,7 @@
         <img src="/images/logo.svg" alt="Pipun VPN" width="135" height="36">
       </a>
 
+      {{ if and (ne .Type "privacy") (ne .Type "terms") }}
       <nav class="nav">
         {{ if eq .Section "locations" }}
         <a href="#steps" class="nav-link">Подключение</a>
@@ -25,6 +26,7 @@
         <span></span>
         <span></span>
       </div>
+      {{ end }}
 
       <a href="https://t.me/pipun_bot?start=header" target="_blank" rel="noopener noreferrer" class="button">Подключить ↗</a>
     </div>
