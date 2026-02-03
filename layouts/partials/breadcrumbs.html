@@ -1,7 +1,6 @@
-<nav class="breadcrumbs">
-  <a href="/" class="breadcrumb-link">Главная</a>
-  {{ if not .IsHome }}
-    <span class="breadcrumb-separator">/</span>
-    <span class="breadcrumb-current">{{ if .Params.breadcrumb }}{{ .Params.breadcrumb }}{{ else }}{{ .Title }}{{ end }}</span>
-  {{ end }}
-</nav>
+<a href="/" class="privacy-back-link">
+  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+    <path d="M8 11L4 6.5L8 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  Вернуться на главную
+</a>
