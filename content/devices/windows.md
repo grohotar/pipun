@@ -1,8 +1,20 @@
 ---
-title: "VPN для Windows"
-description: "VPN для Windows - поддержка всех версий Windows 10 и 11"
-image: "/images/devices/windows.png"
+title: "VPN на ПК без сложных настроек"
+description: "Подключение занимает пару минут: бот присылает ключ и инструкцию. Устанавливаете приложение, вставляете ключ и включаете VPN. Подходит для Windows 10/11 и других ваших устройств в одной подписке"
+seoTitle: "Скачать VPN на ПК (Windows) — подключение без сложных настроек | Pipun"
+seoKeywords: "vpn на пк, впн на пк, vpn windows, впн windows, vpn для компьютера, впн для компьютера, vpn на ноутбук, впн на ноутбук"
+image: "/images/devices/hero/pc-hero.png"
+heroImage: "/images/devices/hero/pc-hero.png"
+setupTitle: "Подключение на ПК"
+setupSteps:
+  - icon: "/images/steps/1.svg"
+    title: "Перейти в Телеграм, выбрать тариф и оплатить"
+    description: "Запустите бота, выберите подходящий тариф и оплатите по любой российской карте или СБП"
+  - icon: "/images/steps/2.svg"
+    title: "Установить приложение и добавить подписку"
+    description: "После оплаты бот пришлет уведомление и покажет кнопку «подключить». После нажатия откроется инструкция"
+  - icon: "/images/steps/3.svg"
+    title: "Выбрать сервер и включить VPN"
+    description: "Выберите сервер из списка в приложении, затем нажмите большую кнопку включения в центре"
 url: "/windows/"
 ---
-
-Страница в разработке

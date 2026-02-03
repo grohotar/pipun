@@ -1,7 +1,15 @@
 {{ $title := "Одна подписка на все устройства" }}
+{{ $exclude := slice }}
 {{ if reflect.IsMap . }}
   {{ with index . "title" }}
     {{ $title = . }}
+  {{ end }}
+  {{ with index . "exclude" }}
+    {{ if reflect.IsSlice . }}
+      {{ $exclude = . }}
+    {{ else }}
+      {{ $exclude = slice . }}
+    {{ end }}
   {{ end }}
 {{ end }}
 <section id="devices" class="section">
@@ -9,47 +17,59 @@
     <h2 class="section-title">{{ $title }}</h2>
 
     <div class="devices-grid">
+      {{ if not (in $exclude "/iphone/") }}
       <a href="/iphone/" class="device-card">
         <div class="device-image">
           <img src="/images/devices/iphone.png" alt="VPN для iPhone - быстрая настройка">
         </div>
         <div class="device-name">IPhone</div>
       </a>
+      {{ end }}
 
+      {{ if not (in $exclude "/android/") }}
       <a href="/android/" class="device-card">
         <div class="device-image">
           <img src="/images/devices/android.png" alt="VPN для Android - простое подключение">
         </div>
         <div class="device-name">Android</div>
       </a>
+      {{ end }}
 
+      {{ if not (in $exclude "/mac/") }}
       <a href="/mac/" class="device-card">
         <div class="device-image">
           <img src="/images/devices/mac.png" alt="VPN для Mac - работает на macOS">
         </div>
         <div class="device-name">Mac</div>
       </a>
+      {{ end }}
 
+      {{ if not (in $exclude "/windows/") }}
       <a href="/windows/" class="device-card">
         <div class="device-image">
           <img src="/images/devices/windows.png" alt="VPN для Windows - поддержка всех версий">
         </div>
         <div class="device-name">Windows</div>
       </a>
+      {{ end }}
 
+      {{ if not (in $exclude "/appletv/") }}
       <a href="/appletv/" class="device-card">
         <div class="device-image">
           <img src="/images/devices/appletv.png" alt="VPN для Apple TV - смотрите контент без ограничений">
         </div>
         <div class="device-name">Apple TV</div>
       </a>
+      {{ end }}
 
+      {{ if not (in $exclude "/androidtv/") }}
       <a href="/androidtv/" class="device-card">
         <div class="device-image">
           <img src="/images/devices/androidtv.png" alt="VPN для Android TV - доступ к заблокированным сервисам">
         </div>
         <div class="device-name">Android TV</div>
       </a>
+      {{ end }}
     </div>
   </div>
 </section>

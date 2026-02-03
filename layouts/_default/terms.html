@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{ partial "header.html" . }}
+
+<main>
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">{{ .Title }}</h1>
+
+      <div class="articles-grid">
+        {{ range .Data.Terms.Alphabetical }}
+        <a href="{{ .Page.Permalink }}" class="article-card">
+          <div class="article-title">{{ .Page.Title }}</div>
+          {{ $n := .Count }}
+          {{ $n10 := mod $n 10 }}
+          {{ $n100 := mod $n 100 }}
+          {{ $isOne := and (eq $n10 1) (ne $n100 11) }}
+          {{ $isFew := and (or (eq $n10 2) (eq $n10 3) (eq $n10 4)) (not (or (eq $n100 12) (eq $n100 13) (eq $n100 14))) }}
+          {{ $word := cond $isOne "материал" (cond $isFew "материала" "материалов") }}
+          <div class="article-date">{{ $n }} {{ $word }}</div>
+        </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}

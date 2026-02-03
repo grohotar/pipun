@@ -1,8 +1,20 @@
 ---
-title: "VPN для Mac"
-description: "VPN для macOS - работает на всех версиях Mac"
-image: "/images/devices/mac.png"
+title: "VPN на Mac без сложных настроек"
+description: "Всё работает на macOS без ручных настроек и сложных меню. Одна подписка покрывает Mac и остальные устройства"
+seoTitle: "Скачать VPN на Mac — подключение без сложных настроек | Pipun"
+seoKeywords: "vpn mac, впн mac, vpn macos, впн macos, vpn на мак, впн на мак"
+image: "/images/devices/hero/mac-hero.png"
+heroImage: "/images/devices/hero/mac-hero.png"
+setupTitle: "Подключение на Mac"
+setupSteps:
+  - icon: "/images/steps/1.svg"
+    title: "Перейти в Телеграм, выбрать тариф и оплатить"
+    description: "Запустите бота, выберите подходящий тариф и оплатите по любой российской карте или СБП"
+  - icon: "/images/steps/2.svg"
+    title: "Установить приложение и добавить подписку"
+    description: "После оплаты бот пришлет уведомление и покажет кнопку «подключить». После нажатия откроется инструкция"
+  - icon: "/images/steps/3.svg"
+    title: "Выбрать сервер и включить VPN"
+    description: "Выберите сервер из списка в приложении, затем нажмите большую кнопку включения в центре"
 url: "/mac/"
 ---
-
-Страница в разработке

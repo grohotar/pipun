@@ -1,8 +1,20 @@
 ---
-title: "VPN для Android TV"
-description: "VPN для Android TV - доступ к заблокированным сервисам на телевизоре"
-image: "/images/devices/androidtv.png"
+title: "VPN на Android TV без сложных настроек"
+description: "После оплаты ключ автоматически приходит в чат — вставляете его в приложение и включаете VPN. Подключение занимает пару минут и не требует технических знаний. Одна подписка работает и на других ваших устройствах"
+seoTitle: "VPN на Android TV — подключение для телевизора | Pipun"
+seoKeywords: "vpn android tv, впн android tv, vpn на android tv, впн на android tv, vpn для телевизора, впн на телевизор"
+image: "/images/devices/hero/tv-hero.png"
+heroImage: "/images/devices/hero/tv-hero.png"
+setupTitle: "Подключение на Android TV"
+setupSteps:
+  - icon: "/images/steps/1.svg"
+    title: "Перейти в Телеграм, выбрать тариф и оплатить"
+    description: "Запустите бота, выберите подходящий тариф и оплатите по любой российской карте или СБП"
+  - icon: "/images/steps/2.svg"
+    title: "Установить приложение и добавить подписку"
+    description: "После оплаты бот пришлет уведомление и покажет кнопку «подключить». После нажатия откроется инструкция"
+  - icon: "/images/steps/3.svg"
+    title: "Выбрать сервер и включить VPN"
+    description: "Выберите сервер из списка в приложении, затем нажмите большую кнопку включения в центре"
 url: "/androidtv/"
 ---
-
-Страница в разработке

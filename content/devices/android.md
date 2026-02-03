@@ -1,8 +1,20 @@
 ---
-title: "VPN для Android"
-description: "Простое подключение VPN на Android телефонах и планшетах"
-image: "/images/devices/android.png"
+title: "VPN на Android без сложных настроек"
+description: "Всё в Телеграм‑боте: оплата, ключ и инструкция. Скачайте приложение, вставьте ключ и включите VPN. Одна подписка на все устройства"
+seoTitle: "Скачать VPN на Android — подключение без сложных настроек | Pipun"
+seoKeywords: "vpn android, впн андроид, впн на андроид, vpn на android, впн для андроид, vpn для android, впн на телефон"
+image: "/images/devices/hero/android-hero.png"
+heroImage: "/images/devices/hero/android-hero.png"
+setupTitle: "Подключение на Android"
+setupSteps:
+  - icon: "/images/steps/1.svg"
+    title: "Перейти в Телеграм, выбрать тариф и оплатить"
+    description: "Запустите бота, выберите подходящий тариф и оплатите по любой российской карте или СБП"
+  - icon: "/images/steps/2.svg"
+    title: "Установить приложение и добавить подписку"
+    description: "После оплаты бот пришлет уведомление и покажет кнопку «подключить». После нажатия откроется инструкция"
+  - icon: "/images/steps/3.svg"
+    title: "Выбрать сервер и включить VPN"
+    description: "Выберите сервер из списка в приложении, затем нажмите большую кнопку включения в центре"
 url: "/android/"
 ---
-
-Страница в разработке

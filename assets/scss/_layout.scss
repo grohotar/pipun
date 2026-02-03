@@ -295,6 +295,22 @@
       height: 100% !important;
     }
   }
+
+  .hero-device-image {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: calc((#{$grid-max-width} - #{$grid-padding-1600} * 2) / 12 * 6 + #{$grid-gap-1600} * 5);
+    max-width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
 }
 
 @media (max-width: 1599px) {
@@ -307,6 +323,10 @@
     .hero-flag-icon {
       width: calc((1200px - #{$grid-padding-1200} * 2) / 12 * 6 + #{$grid-gap-1200} * 5);
       height: calc((1200px - #{$grid-padding-1200} * 2) / 12 * 6 + #{$grid-gap-1200} * 5);
+    }
+
+    .hero-device-image {
+      width: calc((1200px - #{$grid-padding-1200} * 2) / 12 * 6 + #{$grid-gap-1200} * 5);
     }
   }
 }
@@ -330,6 +350,14 @@
       width: calc((992px - #{$grid-padding-992} * 2) / 12 * 6 + #{$grid-gap-992} * 5);
       height: calc((992px - #{$grid-padding-992} * 2) / 12 * 6 + #{$grid-gap-992} * 5);
     }
+
+    .hero-device-image {
+      position: relative;
+      margin: 48px auto 0;
+      top: auto;
+      transform: none;
+      width: calc((992px - #{$grid-padding-992} * 2) / 12 * 6 + #{$grid-gap-992} * 5);
+    }
   }
 }
 
@@ -343,6 +371,10 @@
     .hero-flag-icon {
       width: calc((768px - #{$grid-padding-768} * 2) / 12 * 6 + #{$grid-gap-768} * 5);
       height: calc((768px - #{$grid-padding-768} * 2) / 12 * 6 + #{$grid-gap-768} * 5);
+    }
+
+    .hero-device-image {
+      width: calc((768px - #{$grid-padding-768} * 2) / 12 * 6 + #{$grid-gap-768} * 5);
     }
   }
 }
@@ -372,6 +404,11 @@
     .hero-flag-icon {
       width: calc(100vw - #{$grid-padding-mobile} * 2);
       height: calc(100vw - #{$grid-padding-mobile} * 2);
+      margin-top: 48px;
+    }
+
+    .hero-device-image {
+      width: calc(100vw - #{$grid-padding-mobile} * 2);
       margin-top: 48px;
     }
   }

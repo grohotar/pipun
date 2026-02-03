@@ -12,15 +12,179 @@
           <p class="hero-description">{{ .Description }}</p>
           <a href="https://t.me/pipun_bot?start=main" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
         </div>
+        {{ with (.Params.heroImage | default .Params.image) }}
+        <div class="hero-device-image">
+          <img src="{{ . }}" alt="{{ $.Title }}">
+        </div>
+        {{ end }}
       </div>
     </div>
   </section>
 
-  <!-- Content Section -->
-  <section class="section article-page">
+  {{ if .Params.setupSteps }}
+  <section id="steps" class="section why-turkey-section">
     <div class="container">
-      <div class="article-content">
-        {{ .Content }}
+      <h2 class="section-title">{{ .Params.setupTitle | default "Подключение" }}</h2>
+
+      <div class="features-grid">
+        {{ range .Params.setupSteps }}
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="{{ .icon }}" alt="{{ .title }}">
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">{{ .title }}</h3>
+            <p class="feature-description">{{ .description | markdownify }}</p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ partial "sections/countries.html" . }}
+
+  {{ partial "sections/pricing.html" . }}
+
+  {{ partial "sections/devices.html" (dict "title" "Работает на всех устройствах" "exclude" (slice .RelPermalink)) }}
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Частые вопросы</h2>
+
+      <div class="faq-grid">
+        <div class="faq-list">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Зачем платить, когда есть бесплатные сервисы?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Бесплатные сервисы часто экономят на&nbsp;безопасности и&nbsp;режут скорость, чтобы снизить нагрузку. Но&nbsp;главная проблема&nbsp;— скрытая монетизация: чтобы окупать серверы, они могут собирать вашу историю посещений и&nbsp;личные данные для продажи рекламным сетям. У&nbsp;нас вы&nbsp;платите за&nbsp;честный сервис, а&nbsp;не&nbsp;становитесь товаром</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Нужна локация, которой нет в&nbsp;списке</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Мы&nbsp;любим расширять локации. Напишите нам в&nbsp;<a href="https://t.me/pipunhelper" target="_blank" rel="noopener noreferrer" class="link-pink-inline">поддержку ↗</a>, какая именно страна вам нужна. Если наберется достаточно запросов и&nbsp;будет техническая возможность, мы&nbsp;добавим эту локацию в&nbsp;ближайшее время</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Как отменить подписку?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Мы&nbsp;не&nbsp;храним данные ваших карт и&nbsp;не&nbsp;списываем деньги автоматически. Никаких скрытых платежей: когда подписка будет заканчиваться, бот просто пришлет напоминание. Вы&nbsp;сами решаете, продлевать доступ или нет</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">Моего устройства нет в&nbsp;списке, можно ли&nbsp;к&nbsp;нему подключить?</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">Скорее всего, да. Наш протокол поддерживает почти все современные системы, включая Linux и&nbsp;роутеры (например, Keenetic или OpenWRT). Напишите в&nbsp;нашу поддержку&nbsp;— мы&nbsp;проверим совместимость вашего устройства и, если это технически возможно, пришлем ручную инструкцию по&nbsp;настройке</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-block">
+          <h3 class="support-title">Не&nbsp;нашли ответ на&nbsp;свой вопрос? Напишите нам&nbsp;— мы&nbsp;поможем</h3>
+          <p class="support-description">Мы&nbsp;не&nbsp;используем автоответчики и&nbsp;шаблонные скрипты. Отвечаем максимально быстро, но&nbsp;иногда нам тоже нужно отдохнуть. Если вы&nbsp;написали ночью&nbsp;— ответим утром первым делом и&nbsp;сразу по&nbsp;существу</p>
+          <a href="https://t.me/pipunhelper" target="_blank" rel="noopener noreferrer" class="link-pink">Написать в&nbsp;Телеграм ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Зачем платить, когда есть бесплатные сервисы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Бесплатные сервисы часто экономят на безопасности и режут скорость, чтобы снизить нагрузку. Но главная проблема — скрытая монетизация: чтобы окупать серверы, они могут собирать вашу историю посещений и личные данные для продажи рекламным сетям. У нас вы платите за честный сервис, а не становитесь товаром"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужна локация, которой нет в списке",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Мы любим расширять локации. Напишите нам в поддержку, какая именно страна вам нужна. Если наберется достаточно запросов и будет техническая возможность, мы добавим эту локацию в ближайшее время"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как отменить подписку?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Мы не храним данные ваших карт и не списываем деньги автоматически. Никаких скрытых платежей: когда подписка будет заканчиваться, бот просто пришлет напоминание. Вы сами решаете, продлевать доступ или нет"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Моего устройства нет в списке, можно ли к нему подключить?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Скорее всего, да. Наш протокол поддерживает почти все современные системы, включая Linux и роутеры (например, Keenetic или OpenWRT). Напишите в нашу поддержку — мы проверим совместимость вашего устройства и, если это технически возможно, пришлем ручную инструкцию по настройке"
+          }
+        }
+      ]
+    }
+    </script>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="blog" class="section">
+    <div class="container">
+      <h2 class="section-title">Полезные инструкции</h2>
+
+      <div class="articles-grid">
+        <a href="/youtube-premium-2026/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/youtube-premium.jpg" alt="Как купить YouTube Premium в России через VPN в 2026 году">
+          </div>
+          <div class="article-date">20.01.26</div>
+          <div class="article-title">Инструкция как купить YouTube Premium в&nbsp;2026 году</div>
+        </a>
+
+        <a href="/chatgpt-midjourney-russia/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/chatgpt.jpg" alt="Доступ к ChatGPT и Midjourney из России через VPN">
+          </div>
+          <div class="article-date">16.01.26</div>
+          <div class="article-title">Как пользоваться ChatGPT и&nbsp;Midjourney из&nbsp;России</div>
+        </a>
+
+        <a href="/ps-store-turkey/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/ps-store.jpg" alt="Покупка игр в PS Store через турецкий VPN">
+          </div>
+          <div class="article-date">10.01.26</div>
+          <div class="article-title">Покупка в&nbsp;PS Store через Турцию: гайд по&nbsp;регистрации и&nbsp;оплате</div>
+        </a>
+
+        <a href="/steam-region-change/" class="article-card">
+          <div class="article-image">
+            <img src="/images/articles/steam.jpg" alt="Смена региона Steam на Казахстан или Турцию через VPN">
+          </div>
+          <div class="article-date">05.01.26</div>
+          <div class="article-title">Как сменить регион Steam на&nbsp;Казахстан или Турцию и&nbsp;пополнять баланс</div>
+        </a>
       </div>
     </div>
   </section>

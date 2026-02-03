@@ -1,6 +1,9 @@
 ---
 title: "Турецкий VPN для выгодных покупок и YouTube"
 description: "Получите IP-адрес в Стамбуле, чтобы оплачивать подписки в 2-3 раза дешевле. Идеально подходит для оформления YouTube Premium, Spotify, Discord Nitro и смены региона в Steam. Работает быстро и стабильно"
+seoTitle: "VPN Турция — турецкий IP для подписок | Pipun"
+seoDescription: "VPN Турция с IP‑адресом в Стамбуле для YouTube Premium, Steam и подписок дешевле"
+seoKeywords: "впн турция, vpn турция, турецкий vpn, vpn стамбул, vpn для youtube premium, vpn для steam турция, vpn для ps store"
 flag: "/images/flags/turkey.svg"
 flagIcon: "/images/flags/TR.png"
 url: "/turkey/"

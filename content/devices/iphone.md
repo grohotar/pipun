@@ -1,8 +1,20 @@
 ---
-title: "VPN для iPhone"
-description: "Быстрая настройка VPN на iPhone за 2 минуты. Работает на всех моделях iOS"
-image: "/images/devices/iphone.png"
+title: "VPN на iPhone без сложных настроек"
+description: "Оплата и ключ приходят в Телеграм, вы просто вставляете ключ в приложение из App Store и включаете VPN. Никаких ручных конфигов — всё уже настроено. Одна подписка работает и на других устройствах."
+seoTitle: "Скачать VPN на iPhone — подключение за 2 минуты | Pipun"
+seoKeywords: "vpn iphone, впн айфон, впн на айфон, vpn на iphone, vpn ios, впн ios, vpn для iphone"
+image: "/images/devices/hero/ipad-iphone-hero.png"
+heroImage: "/images/devices/hero/ipad-iphone-hero.png"
+setupTitle: "Подключение на iPhone и iPad"
+setupSteps:
+  - icon: "/images/steps/1.svg"
+    title: "Перейти в Телеграм, выбрать тариф и оплатить"
+    description: "Запустите бота, выберите подходящий тариф и оплатите по любой российской карте или СБП"
+  - icon: "/images/steps/2.svg"
+    title: "Установить приложение и добавить подписку"
+    description: "После оплаты бот пришлет уведомление и покажет кнопку «подключить». После нажатия откроется инструкция"
+  - icon: "/images/steps/3.svg"
+    title: "Выбрать сервер и включить VPN"
+    description: "Выберите сервер из списка в приложении, затем нажмите большую кнопку включения в центре"
 url: "/iphone/"
 ---
-
-Страница в разработке

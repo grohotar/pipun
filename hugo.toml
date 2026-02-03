@@ -1,6 +1,6 @@
 baseURL = 'https://pipun.pro/'
 languageCode = 'ru-RU'
-title = 'Скачать VPN на ПК для YouTube и Discord | Pipun от 149₽'
+title = 'Pipun VPN'
 
 [permalinks]
   locations = '/:slug/'

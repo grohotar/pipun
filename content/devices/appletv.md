@@ -1,8 +1,20 @@
 ---
-title: "VPN для Apple TV"
-description: "VPN для Apple TV - смотрите контент без ограничений"
-image: "/images/devices/appletv.png"
+title: "VPN на Apple TV без сложных настроек"
+description: "Получаете ключ и инструкцию в Телеграме, настраиваете один раз и включаете VPN. Подходит для просмотра YouTube в 4К. Подписка действует и на телефоны, и на компьютеры"
+seoTitle: "VPN на Apple TV — подключение для телевизора | Pipun"
+seoKeywords: "vpn apple tv, впн apple tv, vpn на apple tv, впн на apple tv, vpn для телевизора, впн на телевизор"
+image: "/images/devices/hero/tv-hero.png"
+heroImage: "/images/devices/hero/tv-hero.png"
+setupTitle: "Подключение на Apple TV"
+setupSteps:
+  - icon: "/images/steps/1.svg"
+    title: "Перейти в Телеграм, выбрать тариф и оплатить"
+    description: "Запустите бота, выберите подходящий тариф и оплатите по любой российской карте или СБП"
+  - icon: "/images/steps/2.svg"
+    title: "Установить приложение и добавить подписку"
+    description: "После оплаты бот пришлет уведомление и покажет кнопку «подключить». После нажатия откроется инструкция"
+  - icon: "/images/steps/3.svg"
+    title: "Выбрать сервер и включить VPN"
+    description: "Выберите сервер из списка в приложении, затем нажмите большую кнопку включения в центре"
 url: "/appletv/"
 ---
-
-Страница в разработке

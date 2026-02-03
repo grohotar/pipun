@@ -3,6 +3,9 @@
 /resources/_gen/
 /.hugo_build.lock
 
+# Writing references (don’t commit competitors’ texts)
+/references/
+
 # OS
 .DS_Store
 Thumbs.db

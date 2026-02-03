@@ -16,7 +16,7 @@ git pull origin main
 
 # Build static files with Hugo
 echo "🔨 Building static site with Hugo..."
-hugo --minify
+hugo --minify --cleanDestinationDir
 
 echo "✅ Deployment complete!"
 echo "🌐 Site available at https://pipun.pro"

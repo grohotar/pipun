@@ -3,7 +3,7 @@ FROM hugomods/hugo:exts as builder
 
 WORKDIR /src
 COPY . .
-RUN hugo --minify
+RUN hugo --minify --cleanDestinationDir
 
 # Stage 2: Serve with nginx
 FROM nginx:alpine

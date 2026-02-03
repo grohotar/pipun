@@ -1,14 +1,56 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ .Site.LanguageCode }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {{ $siteTitle := .Site.Title }}
+  {{ $pageTitle := .Title }}
+  {{ $seoTitle := .Params.seoTitle }}
+  {{ $metaTitle := "" }}
+  {{ if .IsHome }}
+    {{ if $seoTitle }}
+      {{ $metaTitle = $seoTitle }}
+    {{ else }}
+      {{ $metaTitle = $siteTitle }}
+    {{ end }}
+  {{ else }}
+    {{ if $seoTitle }}
+      {{ $metaTitle = $seoTitle }}
+    {{ else if $siteTitle }}
+      {{ $metaTitle = printf "%s | %s" $pageTitle $siteTitle }}
+    {{ else }}
+      {{ $metaTitle = $pageTitle }}
+    {{ end }}
+  {{ end }}
+
+  {{ $seoDescription := .Params.seoDescription }}
+  {{ $metaDescription := "" }}
+  {{ if $seoDescription }}
+    {{ $metaDescription = $seoDescription }}
+  {{ else if .Description }}
+    {{ $metaDescription = .Description }}
+  {{ else }}
+    {{ $metaDescription = .Site.Params.description }}
+  {{ end }}
+
+  {{ $seoKeywords := .Params.seoKeywords }}
+  {{ $metaKeywords := "" }}
+  {{ if $seoKeywords }}
+    {{ $metaKeywords = $seoKeywords }}
+  {{ else if .Params.keywords }}
+    {{ $metaKeywords = .Params.keywords }}
+  {{ else }}
+    {{ $metaKeywords = .Site.Params.keywords }}
+  {{ end }}
+
+  {{ $metaImage := or .Params.image .Site.Params.image }}
   
   <!-- Primary Meta Tags -->
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
-  <meta name="title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}">
-  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-  <meta name="keywords" content="{{ if .Params.keywords }}{{ .Params.keywords }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+  <title>{{ $metaTitle }}</title>
+  <meta name="title" content="{{ $metaTitle }}">
+  <meta name="description" content="{{ $metaDescription }}">
+  <meta name="keywords" content="{{ $metaKeywords }}">
   <meta name="author" content="{{ .Site.Params.author }}">
   <meta name="robots" content="{{ if .Params.robots }}{{ .Params.robots }}{{ else }}index, follow{{ end }}">
   <link rel="canonical" href="{{ .Permalink }}">
@@ -16,9 +58,10 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{{ if eq .Section "blog" }}article{{ else }}website{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}">
-  <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}{{ if .Params.image }}{{ .Params.image }}{{ else }}{{ .Site.Params.image }}{{ end }}">
+  <meta property="og:title" content="{{ $metaTitle }}">
+  <meta property="og:description" content="{{ $metaDescription }}">
+  <meta property="og:image" content="{{ $metaImage | absURL }}">
+  <meta property="og:image:alt" content="{{ $metaTitle }}">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   {{ if eq .Section "blog" }}
@@ -29,9 +72,10 @@
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="{{ .Permalink }}">
-  <meta property="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}">
-  <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-  <meta property="twitter:image" content="{{ .Site.BaseURL }}{{ if .Params.image }}{{ .Params.image }}{{ else }}{{ .Site.Params.image }}{{ end }}">
+  <meta property="twitter:title" content="{{ $metaTitle }}">
+  <meta property="twitter:description" content="{{ $metaDescription }}">
+  <meta property="twitter:image" content="{{ $metaImage | absURL }}">
+  <meta name="twitter:image:alt" content="{{ $metaTitle }}">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -58,7 +102,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "{{ .Title }}",
-    "description": "{{ .Description }}",
+    "description": "{{ $metaDescription }}",
     "brand": {
       "@type": "Brand",
       "name": "Pipun VPN"
@@ -83,8 +127,8 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "{{ .Title }}",
-    "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}",
-    "image": "{{ .Site.BaseURL }}{{ if .Params.image }}{{ .Params.image }}{{ else }}{{ .Site.Params.image }}{{ end }}",
+    "description": "{{ $metaDescription }}",
+    "image": "{{ $metaImage | absURL }}",
     "author": {
       "@type": "Organization",
       "name": "{{ .Site.Params.author }}"
@@ -94,7 +138,7 @@
       "name": "{{ .Site.Params.author }}",
       "logo": {
         "@type": "ImageObject",
-        "url": "{{ .Site.BaseURL }}{{ .Site.Params.image }}"
+        "url": "{{ .Site.Params.image | absURL }}"
       }
     },
     "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
@@ -112,7 +156,7 @@
     "@type": "Organization",
     "name": "Pipun VPN",
     "url": "{{ .Site.BaseURL }}",
-    "logo": "{{ .Site.BaseURL }}{{ .Site.Params.image }}",
+    "logo": "{{ .Site.Params.image | absURL }}",
     "description": "{{ .Site.Params.description }}",
     "contactPoint": {
       "@type": "ContactPoint",
