@@ -1050,10 +1050,24 @@
     width: 100%;
     height: auto;
     margin-top: 48px;
+    animation: none;
 
     img {
       max-width: 300px;
+      animation: none;
+      filter: none;
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-flag {
+    animation: none;
+  }
+
+  .hero-flag img {
+    animation: none;
+    filter: drop-shadow(0 20px 60px rgba(255, 31, 165, 0.3));
   }
 }
 

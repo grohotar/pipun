@@ -25,6 +25,67 @@ async function loadGLTFLoader() {
   return module.GLTFLoader;
 }
 
+function isIOSDevice() {
+  const ua = navigator.userAgent || '';
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  return isIOS || isIPadOS;
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function get3dSettings() {
+  const dpr = window.devicePixelRatio || 1;
+  const isSmallScreen = window.innerWidth <= 767;
+  const reducedMotion = prefersReducedMotion();
+  const lowPower = isIOSDevice() || isSmallScreen;
+  const pixelRatio = lowPower ? Math.min(dpr, 1.25) : Math.min(dpr * 1.5, 2);
+  return { reducedMotion, lowPower, pixelRatio };
+}
+
+function setupRenderLoop(renderer, container, renderFrame, { allowAnimation } = {}) {
+  if (!allowAnimation) {
+    renderFrame(0);
+    return () => {};
+  }
+
+  let isInView = true;
+  let isPageVisible = !document.hidden;
+  let observer = null;
+
+  function updateLoop() {
+    if (isInView && isPageVisible) {
+      renderer.setAnimationLoop(renderFrame);
+    } else {
+      renderer.setAnimationLoop(null);
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver((entries) => {
+      isInView = entries.some((entry) => entry.isIntersecting);
+      updateLoop();
+    }, { threshold: 0.1 });
+    observer.observe(container);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+    updateLoop();
+  });
+
+  updateLoop();
+
+  return () => {
+    if (observer) {
+      observer.disconnect();
+    }
+    renderer.setAnimationLoop(null);
+  };
+}
+
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
   const accordionItems = document.querySelectorAll('.accordion-item');
@@ -175,6 +236,9 @@ document.addEventListener('DOMContentLoaded', function() {
 async function initEarth(container) {
   const THREE = await loadThree();
   const OrbitControls = await loadOrbitControls();
+  const settings = get3dSettings();
+  const reduceMotion = settings.reducedMotion;
+  const lowPower = settings.lowPower;
 
   // Scene
   const scene = new THREE.Scene();
@@ -201,7 +265,7 @@ async function initEarth(container) {
     const height = rect.height || fallbackSize;
     const size = Math.min(width, height);
     renderer.setSize(size, size);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio * 1.5, 3));
+    renderer.setPixelRatio(get3dSettings().pixelRatio);
     camera.aspect = 1;
     camera.updateProjectionMatrix();
   }
@@ -219,15 +283,17 @@ async function initEarth(container) {
   
   // Textures
   const textureLoader = new THREE.TextureLoader();
-  const earthTexture = textureLoader.load('/8k_earth_daymap.jpg');
+  const earthTextureUrl = lowPower ? '/2k_earth_daymap.jpg' : '/8k_earth_daymap.jpg';
+  const earthTexture = textureLoader.load(earthTextureUrl);
   earthTexture.colorSpace = THREE.SRGBColorSpace;
-  earthTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  earthTexture.anisotropy = lowPower ? 1 : renderer.capabilities.getMaxAnisotropy();
   earthTexture.minFilter = THREE.LinearMipMapLinearFilter;
   earthTexture.magFilter = THREE.LinearFilter;
   earthTexture.generateMipmaps = true;
   
   // Earth geometry
-  const earthGeometry = new THREE.SphereGeometry(0.85, 128, 128);
+  const earthSegments = lowPower ? 64 : 128;
+  const earthGeometry = new THREE.SphereGeometry(0.85, earthSegments, earthSegments);
   
   // Earth material with custom shader
   const earthMaterial = new THREE.ShaderMaterial({
@@ -284,7 +350,8 @@ async function initEarth(container) {
   scene.add(earth);
   
   // Atmosphere
-  const atmosphereGeometry = new THREE.SphereGeometry(0.87, 64, 64);
+  const atmosphereSegments = lowPower ? 48 : 64;
+  const atmosphereGeometry = new THREE.SphereGeometry(0.87, atmosphereSegments, atmosphereSegments);
   const atmosphereMaterial = new THREE.ShaderMaterial({
     uniforms: {
       sunDirection: { value: new THREE.Vector3(5, 3, 5).normalize() }
@@ -385,7 +452,7 @@ async function initEarth(container) {
   
   // Controls
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
+  controls.enableDamping = !reduceMotion;
   controls.dampingFactor = 0.05;
   controls.enableZoom = false;
   controls.autoRotate = false;
@@ -394,21 +461,22 @@ async function initEarth(container) {
   const clock = new THREE.Clock();
   let rotationSpeed = 0.06;
   
-  function animate() {
-    requestAnimationFrame(animate);
-    
-    const delta = clock.getDelta();
-    earth.rotation.y += delta * rotationSpeed;
-    atmosphere.rotation.y += delta * rotationSpeed;
-    
+  function renderFrame() {
+    if (!reduceMotion) {
+      const delta = Math.min(clock.getDelta(), 0.05);
+      earth.rotation.y += delta * rotationSpeed;
+      atmosphere.rotation.y += delta * rotationSpeed;
+      controls.update();
+    }
+
     // Update label visibility based on camera position
-    updateLabelVisibility(labels, camera, THREE);
-    
-    controls.update();
+    if (labels.length > 0) {
+      updateLabelVisibility(labels, camera, THREE);
+    }
     renderer.render(scene, camera);
   }
-  
-  animate();
+
+  setupRenderLoop(renderer, container, renderFrame, { allowAnimation: !reduceMotion });
 }
 
 function addCountryBorders(earth, feature, THREE) {
@@ -531,6 +599,8 @@ function updateLabelVisibility(labels, camera, THREE) {
 async function initFlagCoin(container, flagPath) {
   const THREE = await loadThree();
   const GLTFLoader = await loadGLTFLoader();
+  const settings = get3dSettings();
+  const reduceMotion = settings.reducedMotion;
 
   // Scene
   const scene = new THREE.Scene();
@@ -548,7 +618,7 @@ async function initFlagCoin(container, flagPath) {
   const isMobile = window.innerWidth <= 767;
   const size = isMobile ? window.innerWidth - 32 : container.offsetWidth; // На мобиле: ширина экрана - padding
   renderer.setSize(size, size);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio * 2, 3)); // Увеличил качество
+  renderer.setPixelRatio(settings.pixelRatio);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   container.appendChild(renderer.domElement);
   
@@ -755,9 +825,7 @@ async function initFlagCoin(container, flagPath) {
   // Animation
   const clock = new THREE.Clock();
   
-  function animate() {
-    requestAnimationFrame(animate);
-    
+  function renderFrame() {
     if (coin) {
       const time = clock.getElapsedTime();
       
@@ -778,13 +846,18 @@ async function initFlagCoin(container, flagPath) {
     renderer.render(scene, camera);
   }
   
-  animate();
+  setupRenderLoop(renderer, container, renderFrame, { allowAnimation: !reduceMotion });
   
   // Handle resize
   window.addEventListener('resize', () => {
-    const size = container.offsetWidth;
+    const isSmall = window.innerWidth <= 767;
+    const size = isSmall ? window.innerWidth - 32 : container.offsetWidth;
     camera.aspect = 1;
     camera.updateProjectionMatrix();
     renderer.setSize(size, size);
+    renderer.setPixelRatio(get3dSettings().pixelRatio);
+    if (reduceMotion) {
+      renderFrame();
+    }
   });
 }
