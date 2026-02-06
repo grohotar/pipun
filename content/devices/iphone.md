@@ -2,6 +2,7 @@
 title: "VPN на iPhone без сложных настроек"
 description: "Оплата и ключ приходят в Телеграм, вы просто вставляете ключ в приложение из App Store и включаете VPN. Никаких ручных конфигов — всё уже настроено. Одна подписка работает и на других устройствах."
 seoTitle: "Скачать VPN на iPhone — подключение за 2 минуты | Pipun"
+seoDescription: "VPN на iPhone: оплата и ключ в Телеграм, установка из App Store, подключение без ручных конфигов. Одна подписка на iPhone, Mac и ТВ"
 seoKeywords: "vpn iphone, впн айфон, впн на айфон, vpn на iphone, vpn ios, впн ios, vpn для iphone"
 image: "/images/devices/hero/ipad-iphone-hero.png"
 heroImage: "/images/devices/hero/ipad-iphone-hero.png"

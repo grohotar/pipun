@@ -9,7 +9,10 @@
         <div class="hero-content">
           <h1>Стабильный VPN для YouTube, discord и других сервисов</h1>
           <p class="hero-description">Верните доступ к привычным сайтам и приложениям за пару минут. Никаких сложных настроек и рекламы — вы получаете чистый, безопасный интернет на высокой скорости. Подключение и управление подпиской происходит в удобном Telegram-боте</p>
-          <a href="https://t.me/pipun_bot?start=main" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
+          {{ $suffix := partial "start-suffix.html" . }}
+          {{ $start := "main" }}
+          {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+          <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
         </div>
         <div class="hero-globe" id="globeViz"></div>
       </div>
@@ -22,10 +25,10 @@
 
   {{ partial "sections/steps.html" . }}
 
-  {{ partial "sections/pricing.html" . }}
+  {{ partial "sections/solutions.html" . }}
 
   <!-- FAQ Section -->
-  <section class="section">
+  <section id="faq" class="section">
     <div class="container">
       <h2 class="section-title">Частые вопросы</h2>
 
@@ -123,6 +126,9 @@
     </script>
   </section>
 
+  {{ partial "sections/cta-general.html" . }}
+
+  {{ if .Site.Params.showArticles }}
   <!-- Articles Section -->
   <section id="blog" class="section">
     <div class="container">
@@ -163,6 +169,7 @@
       </div>
     </div>
   </section>
+  {{ end }}
 </main>
 
 {{ end }}

@@ -19,11 +19,18 @@
         <a href="#pricing" class="nav-link">Тарифы</a>
         <a href="#devices" class="nav-link">Устройства</a>
         <a href="#blog" class="nav-link">Решения</a>
+        {{ else if eq .Section "solutions" }}
+        <a href="#devices" class="nav-link">Устройства</a>
+        <a href="#steps" class="nav-link">Подключение</a>
+        <a href="#locations" class="nav-link">Локации</a>
+        <a href="#pricing" class="nav-link">Тарифы</a>
+        <a href="#faq" class="nav-link">FAQ</a>
         {{ else }}
         <a href="#locations" class="nav-link">Локации</a>
         <a href="#devices" class="nav-link">Устройства</a>
-        <a href="#blog" class="nav-link">Решения</a>
+        <a href="#steps" class="nav-link">Подключение</a>
         <a href="#pricing" class="nav-link">Тарифы</a>
+        <a href="#faq" class="nav-link">FAQ</a>
         {{ end }}
       </nav>
 
@@ -34,7 +41,10 @@
       </div>
       {{ end }}
 
-      <a href="https://t.me/pipun_bot?start=header" target="_blank" rel="noopener noreferrer" class="button">Подключить ↗</a>
+      {{ $suffix := partial "start-suffix.html" . }}
+      {{ $start := "header" }}
+      {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+      <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button">Подключить ↗</a>
     </div>
   </div>
 </header>

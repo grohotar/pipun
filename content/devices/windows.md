@@ -1,7 +1,8 @@
 ---
 title: "VPN на ПК без сложных настроек"
 description: "Подключение занимает пару минут: бот присылает ключ и инструкцию. Устанавливаете приложение, вставляете ключ и включаете VPN. Подходит для Windows 10/11 и других ваших устройств в одной подписке"
-seoTitle: "Скачать VPN на ПК (Windows) — подключение без сложных настроек | Pipun"
+seoTitle: "Скачать VPN на ПК Windows — за 2 минуты | Pipun"
+seoDescription: "VPN на ПК Windows: бот присылает ключ и инструкцию, вы устанавливаете приложение и включаете VPN. Подходит для Windows 10/11 и других устройств"
 seoKeywords: "vpn на пк, впн на пк, vpn windows, впн windows, vpn для компьютера, впн для компьютера, vpn на ноутбук, впн на ноутбук"
 image: "/images/devices/hero/pc-hero.png"
 heroImage: "/images/devices/hero/pc-hero.png"

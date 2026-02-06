@@ -2,6 +2,7 @@
 title: "VPN на Apple TV без сложных настроек"
 description: "Получаете ключ и инструкцию в Телеграме, настраиваете один раз и включаете VPN. Подходит для просмотра YouTube в 4К. Подписка действует и на телефоны, и на компьютеры"
 seoTitle: "VPN на Apple TV — подключение для телевизора | Pipun"
+seoDescription: "VPN на Apple TV: ключ и инструкция в Телеграм, настраиваете один раз и смотрите без ограничений. Подписка действует на Apple TV, телефон и ПК"
 seoKeywords: "vpn apple tv, впн apple tv, vpn на apple tv, впн на apple tv, vpn для телевизора, впн на телевизор"
 image: "/images/devices/hero/tv-hero.png"
 heroImage: "/images/devices/hero/tv-hero.png"

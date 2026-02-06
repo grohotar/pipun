@@ -1,0 +1,33 @@
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="cta-content">
+        <div class="cta-text-block">
+          <h3 class="cta-title">{{ .Params.ctaTitle }}</h3>
+          {{ with .Params.ctaText }}
+          <p class="cta-text">{{ . }}</p>
+          {{ end }}
+          {{ with .Params.ctaBullets }}
+          <ul class="cta-list">
+            {{ range . }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </div>
+        {{ $page := . }}
+        {{ if isset . "page" }}{{ $page = .page }}{{ end }}
+        {{ $suffix := partial "start-suffix.html" $page }}
+        {{ $start := "cta" }}
+        {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+        {{ if isset . "start" }}{{ $start = .start }}{{ end }}
+        <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button cta-button">Подключить через Телеграм ↗</a>
+      </div>
+      {{ with .Params.ctaImage }}
+      <div class="cta-image">
+        <img src="{{ . }}" alt="{{ $.Params.ctaTitle }}">
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

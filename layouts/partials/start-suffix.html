@@ -1,0 +1,9 @@
+{{- $suffix := "" -}}
+{{- if and (not .IsHome) (ne .Kind "section") -}}
+  {{- if .Params.slug -}}
+    {{- $suffix = .Params.slug -}}
+  {{- else if .File -}}
+    {{- $suffix = .File.BaseFileName -}}
+  {{- end -}}
+{{- end -}}
+{{- $suffix -}}

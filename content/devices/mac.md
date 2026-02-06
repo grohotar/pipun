@@ -2,6 +2,7 @@
 title: "VPN на Mac без сложных настроек"
 description: "Всё работает на macOS без ручных настроек и сложных меню. Одна подписка покрывает Mac и остальные устройства"
 seoTitle: "Скачать VPN на Mac — подключение без сложных настроек | Pipun"
+seoDescription: "VPN на Mac: подключение без ручных настроек, ключ приходит в Телеграм, установка занимает пару минут. Одна подписка работает и на других устройствах"
 seoKeywords: "vpn mac, впн mac, vpn macos, впн macos, vpn на мак, впн на мак"
 image: "/images/devices/hero/mac-hero.png"
 heroImage: "/images/devices/hero/mac-hero.png"

@@ -2,6 +2,7 @@
 title: "VPN на Android без сложных настроек"
 description: "Всё в Телеграм‑боте: оплата, ключ и инструкция. Скачайте приложение, вставьте ключ и включите VPN. Одна подписка на все устройства"
 seoTitle: "Скачать VPN на Android — подключение без сложных настроек | Pipun"
+seoDescription: "VPN на Android: оплата и ключ в Телеграм, установка из Google Play, подключение за пару минут. Одна подписка на телефон, ПК и ТВ"
 seoKeywords: "vpn android, впн андроид, впн на андроид, vpn на android, впн для андроид, vpn для android, впн на телефон"
 image: "/images/devices/hero/android-hero.png"
 heroImage: "/images/devices/hero/android-hero.png"

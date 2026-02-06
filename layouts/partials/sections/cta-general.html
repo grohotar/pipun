@@ -1,0 +1,4 @@
+{{ $suffix := partial "start-suffix.html" . }}
+{{ $start := "cta" }}
+{{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+{{ partial "sections/cta.html" (dict "Params" (dict "ctaTitle" "Подключить VPN" "ctaText" "Оплата и инструкция в Телеграм, дальше вы просто добавляете подписку в приложение и включаете VPN" "ctaBullets" (slice "2 минуты на подключение" "Одна подписка на все устройства" "Все локации в одной подписке") "ctaImage" "/images/solutions/cta-image.png") "start" $start "page" .) }}

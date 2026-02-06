@@ -1,0 +1,104 @@
+{{ define "main" }}
+{{ partial "header.html" . }}
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      {{ partial "breadcrumbs.html" . }}
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <h1>{{ .Title }}</h1>
+          <p class="hero-description">{{ .Description }}</p>
+          {{ $suffix := partial "start-suffix.html" . }}
+          {{ $start := "main" }}
+          {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+          <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
+        </div>
+        {{ with (.Params.heroImage | default .Params.image) }}
+        <div class="hero-device-image">
+          <img src="{{ . }}" alt="{{ $.Title }}">
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ partial "sections/devices.html" (dict "title" (.Params.devicesTitle | default "Одна подписка для всех задач") "page" .) }}
+
+  {{ if .Params.setupSteps }}
+  <section id="steps" class="section why-turkey-section">
+    <div class="container">
+      <h2 class="section-title">{{ .Params.setupTitle | default "Подключение" }}</h2>
+      {{ with .Params.setupDescription }}
+      <p style="max-width: 672px; margin-bottom: 36px;">{{ . }}</p>
+      {{ end }}
+
+      <div class="features-grid">
+        {{ range .Params.setupSteps }}
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="{{ .icon }}" alt="{{ .title }}">
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">{{ .title }}</h3>
+            <p class="feature-description">{{ .description | markdownify }}</p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ partial "sections/countries.html" . }}
+
+  {{ partial "sections/pricing.html" . }}
+
+  {{ partial "sections/solutions-grid.html" . }}
+
+  {{ if .Params.faqs }}
+  <!-- FAQ Section -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 class="section-title">Частые вопросы</h2>
+
+      <div class="faq-grid">
+        <div class="faq-list">
+          {{ range .Params.faqs }}
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <h4 class="accordion-title">{{ .question }}</h4>
+              <div class="accordion-icon"></div>
+            </div>
+            <div class="accordion-content-wrapper">
+              <p class="accordion-content">{{ .answer }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+
+        <div class="support-block">
+          <h3 class="support-title">Не&nbsp;нашли ответ на&nbsp;свой вопрос? Напишите нам&nbsp;— мы&nbsp;поможем</h3>
+          <p class="support-description">Мы&nbsp;не&nbsp;используем автоответчики и&nbsp;шаблонные скрипты. Отвечаем максимально быстро, но&nbsp;иногда нам тоже нужно отдохнуть. Если вы&nbsp;написали ночью&nbsp;— ответим утром первым делом и&nbsp;сразу по&nbsp;существу</p>
+          <a href="https://t.me/pipunhelper" target="_blank" rel="noopener noreferrer" class="link-pink">Написать в&nbsp;Телеграм ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ $faqEntities := slice }}
+  {{ range .Params.faqs }}
+    {{ $faqEntities = $faqEntities | append (dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" (.answer | plainify))) }}
+  {{ end }}
+  <script type="application/ld+json">
+  {{ dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqEntities | jsonify }}
+  </script>
+  {{ end }}
+
+  {{ if .Params.ctaTitle }}
+  {{ partial "sections/cta.html" . }}
+  {{ end }}
+</main>
+
+{{ end }}

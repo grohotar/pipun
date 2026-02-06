@@ -10,7 +10,10 @@
           <h3 class="pricing-title">1 неделя</h3>
           <p class="pricing-description">Проверить скорость и&nbsp;убедиться, что всё работает на&nbsp;вашем устройстве</p>
         </div>
-        <a href="https://t.me/pipun_bot?start=1week" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;149₽</a>
+      {{ $suffix := partial "start-suffix.html" . }}
+      {{ $start := "1week" }}
+      {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+      <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;149₽</a>
       </div>
 
       <div class="pricing-card">
@@ -18,7 +21,9 @@
           <h3 class="pricing-title">1 месяц</h3>
           <p class="pricing-description">Базовый вариант, если не&nbsp;хотите оплачивать надолго вперед</p>
         </div>
-        <a href="https://t.me/pipun_bot?start=1month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;289₽</a>
+      {{ $start = "1month" }}
+      {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+      <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;289₽</a>
       </div>
 
       <div class="pricing-card">
@@ -26,7 +31,9 @@
           <h3 class="pricing-title">3 месяца</h3>
           <p class="pricing-description">Позволяет сэкономить бюджет, не&nbsp;оплачивая сразу целый год</p>
         </div>
-        <a href="https://t.me/pipun_bot?start=3month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;789₽</a>
+      {{ $start = "3month" }}
+      {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+      <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;789₽</a>
       </div>
 
       <div class="pricing-card">
@@ -34,7 +41,9 @@
           <h3 class="pricing-title">6 месяцев</h3>
           <p class="pricing-description">Лучший выбор, если нужна стабильность без частых продлений доступа</p>
         </div>
-        <a href="https://t.me/pipun_bot?start=6month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;1489₽</a>
+      {{ $start = "6month" }}
+      {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+      <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;1489₽</a>
       </div>
 
       <div class="pricing-card">
@@ -42,7 +51,9 @@
           <h3 class="pricing-title">12 месяцев</h3>
           <p class="pricing-description">Самый выгодный тариф. Лучшая цена в&nbsp;пересчете на&nbsp;месяц</p>
         </div>
-        <a href="https://t.me/pipun_bot?start=12month" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;2689₽</a>
+      {{ $start = "12month" }}
+      {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+      <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;2689₽</a>
       </div>
     </div>
   </div>

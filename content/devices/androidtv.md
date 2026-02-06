@@ -2,6 +2,7 @@
 title: "VPN на Android TV без сложных настроек"
 description: "После оплаты ключ автоматически приходит в чат — вставляете его в приложение и включаете VPN. Подключение занимает пару минут и не требует технических знаний. Одна подписка работает и на других ваших устройствах"
 seoTitle: "VPN на Android TV — подключение для телевизора | Pipun"
+seoDescription: "VPN на Android TV: ключ приходит в Телеграм, подключение занимает пару минут и без сложных настроек. Работает на телевизоре и других устройствах"
 seoKeywords: "vpn android tv, впн android tv, vpn на android tv, впн на android tv, vpn для телевизора, впн на телевизор"
 image: "/images/devices/hero/tv-hero.png"
 heroImage: "/images/devices/hero/tv-hero.png"

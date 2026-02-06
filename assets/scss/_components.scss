@@ -3,13 +3,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--columnGap);
-  margin-bottom: 24px;
-
-  &-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--columnGap);
-  }
 }
 
 .country-card {
@@ -544,6 +537,108 @@
   }
 }
 
+// CTA Banner
+.cta-banner {
+  background: $pink;
+  border-radius: 24px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: var(--columnGap);
+}
+
+.cta-content {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.cta-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.cta-title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 32px;
+  letter-spacing: -0.6px;
+  margin-bottom: 20px;
+}
+
+.cta-text {
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: -0.19px;
+  margin-bottom: 20px;
+}
+
+.cta-list {
+  margin: 0 0 0 20px;
+  padding: 0;
+  font-size: 19px;
+  line-height: 24px;
+  letter-spacing: -0.19px;
+  
+  li {
+    margin-bottom: 0;
+  }
+}
+
+.cta-button {
+  background: $white;
+  color: $black;
+  
+  &:hover {
+    background: #ffffff96;
+  }
+}
+
+.cta-image {
+  max-width: 620px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  .cta-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-image {
+    max-width: 100%;
+    order: -1;
+    margin-bottom: 24px;
+  }
+  
+  .cta-content {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cta-banner {
+    padding: 24px;
+  }
+
+  .cta-title {
+    font-size: 21px;
+    line-height: 24px;
+    letter-spacing: -0.42px;
+  }
+
+  .cta-list {
+    margin-left: 16px;
+  }
+}
+
 // Article Cards
 .articles-grid {
   display: grid;
@@ -560,7 +655,8 @@
   .article-image {
     background: $white;
     border-radius: 24px;
-    height: 182px;
+    aspect-ratio: 16 / 9;
+    width: 100%;
     margin-bottom: 12px;
     overflow: hidden;
 
@@ -580,39 +676,69 @@
   }
 
   .article-title {
-    font-size: 19px;
-    line-height: 24px;
-    letter-spacing: -0.19px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 32px;
+    letter-spacing: -0.6px;
+    text-align: center;
     transition: color 0.2s;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 9px;
+      height: 16px;
+      background-color: white;
+      mask-image: url('/images/arrow.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-image: url('/images/arrow.svg');
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      transition: background-color 0.2s;
+    }
   }
 
   &:hover {
-    .article-date,
+    .article-date {
+      color: $pink;
+    }
+    
     .article-title {
       color: $pink;
+      
+      &::after {
+        background-color: $pink;
+      }
     }
   }
 }
 
 // Responsive
+@media (max-width: 1599px) {
+  .articles-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1199px) {
-  .countries-grid,
-  .countries-grid-row {
+  .countries-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .devices-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .articles-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 @media (max-width: 991px) {
-  .countries-grid,
-  .countries-grid-row {
+  .countries-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -631,11 +757,6 @@
 
 @media (max-width: 767px) {
   .countries-grid {
-    margin-bottom: 12px;
-  }
-
-  .countries-grid,
-  .countries-grid-row {
     grid-template-columns: 1fr;
     gap: 12px;
   }
@@ -786,7 +907,7 @@
   }
 
   .articles-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .article-card {
@@ -797,9 +918,9 @@
     }
 
     .article-title {
-      font-size: 16px;
-      line-height: 20px;
-      letter-spacing: -0.32px;
+      font-size: 21px;
+      line-height: 24px;
+      letter-spacing: -0.42px;
     }
   }
 }

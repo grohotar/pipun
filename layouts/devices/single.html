@@ -10,7 +10,10 @@
         <div class="hero-content">
           <h1>{{ .Title }}</h1>
           <p class="hero-description">{{ .Description }}</p>
-          <a href="https://t.me/pipun_bot?start=main" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
+          {{ $suffix := partial "start-suffix.html" . }}
+          {{ $start := "main" }}
+          {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
+          <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button button-large">Подключить через Телеграм ↗</a>
         </div>
         {{ with (.Params.heroImage | default .Params.image) }}
         <div class="hero-device-image">
@@ -49,8 +52,10 @@
 
   {{ partial "sections/devices.html" (dict "title" "Работает на всех устройствах" "exclude" (slice .RelPermalink)) }}
 
+  {{ partial "sections/solutions-grid.html" . }}
+
   <!-- FAQ Section -->
-  <section class="section">
+  <section id="faq" class="section">
     <div class="container">
       <h2 class="section-title">Частые вопросы</h2>
 
@@ -148,6 +153,9 @@
     </script>
   </section>
 
+  {{ partial "sections/cta-general.html" . }}
+
+  {{ if .Site.Params.showArticles }}
   <!-- Articles Section -->
   <section id="blog" class="section">
     <div class="container">
@@ -188,6 +196,7 @@
       </div>
     </div>
   </section>
+  {{ end }}
 </main>
 
 {{ end }}
