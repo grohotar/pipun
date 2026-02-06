@@ -642,7 +642,7 @@
 // Article Cards
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--columnGap);
 }
 
@@ -720,13 +720,6 @@
   }
 }
 
-// Responsive
-@media (max-width: 1599px) {
-  .articles-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 1199px) {
   .countries-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -748,10 +741,6 @@
 
   .faq-grid {
     grid-template-columns: 1fr;
-  }
-
-  .articles-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 

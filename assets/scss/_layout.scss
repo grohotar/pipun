@@ -33,9 +33,16 @@
 // Header
 .header {
   padding: 12px 0;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
-  
+}
+
+.header-static {
+  position: relative !important;
+}
+
+.header {
   .header-inner {
     display: flex;
     align-items: center;
@@ -128,6 +135,10 @@
 }
 
 @media (max-width: 767px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
   .header {
     .header-inner {
       gap: 4px;

@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     burger.addEventListener('click', () => {
       burger.classList.toggle('active');
       nav.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
     });
 
     // Close menu when clicking on a link
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link.addEventListener('click', () => {
         burger.classList.remove('active');
         nav.classList.remove('active');
+        document.body.classList.remove('menu-open');
       });
     });
   }

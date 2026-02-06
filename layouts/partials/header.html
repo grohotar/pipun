@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header{{ if or (eq .Type "privacy") (eq .Type "terms") }} header-static{{ end }}">
   <div class="container">
     <div class="header-inner">
       <a href="/" class="logo">
@@ -10,15 +10,15 @@
         {{ if eq .Section "locations" }}
         <a href="#steps" class="nav-link">Подключение</a>
         <a href="#devices" class="nav-link">Устройства</a>
-        <a href="#pricing" class="nav-link">Цены</a>
-        <a href="#locations" class="nav-link">Локации</a>
-        <a href="#blog" class="nav-link">Блог</a>
+        <a href="#pricing" class="nav-link">Тарифы</a>
+        <a href="#blog" class="nav-link">Применение</a>
+        <a href="#faq" class="nav-link">FAQ</a>
         {{ else if eq .Section "devices" }}
         <a href="#steps" class="nav-link">Подключение</a>
         <a href="#locations" class="nav-link">Локации</a>
         <a href="#pricing" class="nav-link">Тарифы</a>
-        <a href="#devices" class="nav-link">Устройства</a>
-        <a href="#blog" class="nav-link">Решения</a>
+        <a href="#blog" class="nav-link">Применение</a>
+        <a href="#faq" class="nav-link">FAQ</a>
         {{ else if eq .Section "solutions" }}
         <a href="#devices" class="nav-link">Устройства</a>
         <a href="#steps" class="nav-link">Подключение</a>
@@ -30,6 +30,7 @@
         <a href="#devices" class="nav-link">Устройства</a>
         <a href="#steps" class="nav-link">Подключение</a>
         <a href="#pricing" class="nav-link">Тарифы</a>
+        <a href="#blog" class="nav-link">Применение</a>
         <a href="#faq" class="nav-link">FAQ</a>
         {{ end }}
       </nav>

@@ -2,12 +2,7 @@
   <div class="container">
     <h2 class="section-title">Много вариантов применения</h2>
 
-    {{ $cardCount := 3 }}
-    {{ if and .Params.url (or (eq .Params.url "/youtube/") (eq .Params.url "/roblox/") (eq .Params.url "/discord/")) }}
-      {{ $cardCount = 2 }}
-    {{ end }}
-
-    <div class="articles-grid" style="grid-template-columns: repeat({{ if eq $cardCount 2 }}2{{ else }}3{{ end }}, 1fr);">
+    <div class="articles-grid">
       {{ if or (not .Params.url) (ne .Params.url "/youtube/") }}
       <a href="/youtube/" class="article-card">
         <div class="article-image">
