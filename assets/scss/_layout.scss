@@ -487,9 +487,15 @@
 
 @media (max-width: 767px) {
   .button {
+    line-height: 22px;
+
     &-large {
       width: 100%;
     }
+  }
+
+  .link-small {
+    line-height: 22px;
   }
 }
 
@@ -675,7 +681,7 @@
 
     .article-content {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.32px;
       margin-bottom: 28px;
 
@@ -869,7 +875,7 @@
 
     a {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.32px;
     }
   }
@@ -893,7 +899,7 @@
 
       a {
         font-size: 16px;
-        line-height: 20px;
+        line-height: 22px;
         letter-spacing: -0.32px;
       }
     }
@@ -904,7 +910,7 @@
 
     p, a {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.32px;
     }
   }
@@ -1087,7 +1093,7 @@
   margin: 0 auto;
 }
 
-.privacy-back-link {
+  .privacy-back-link {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -1101,7 +1107,7 @@
   
   @media (max-width: 767px) {
     font-size: 16px;
-    line-height: 20px;
+    line-height: 22px;
     letter-spacing: -0.16px;
     margin-bottom: 16px;
   }
@@ -1162,7 +1168,7 @@
   }
 }
 
-.privacy-nav-link {
+  .privacy-nav-link {
   color: $pink;
   font-size: 19px;
   line-height: 24px;
@@ -1172,7 +1178,7 @@
   
   @media (max-width: 767px) {
     font-size: 16px;
-    line-height: 20px;
+    line-height: 22px;
     letter-spacing: -0.16px;
   }
   
@@ -1211,7 +1217,7 @@
   }
 }
 
-.privacy-text {
+  .privacy-text {
   font-size: 19px;
   line-height: 24px;
   letter-spacing: -0.19px;
@@ -1220,7 +1226,7 @@
   
   @media (max-width: 767px) {
     font-size: 16px;
-    line-height: 20px;
+    line-height: 22px;
     letter-spacing: -0.16px;
   }
 }
@@ -1241,7 +1247,7 @@
     
     @media (max-width: 767px) {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.16px;
     }
   }

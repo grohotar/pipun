@@ -7,14 +7,14 @@
 
 .country-card {
   background: $white-alpha-145;
-  border-radius: 88px;
+  border-radius: 72px;
   padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
   position: relative;
-  height: 96px;
+  height: 80px;
   box-sizing: border-box;
   text-decoration: none;
   color: inherit;
@@ -22,8 +22,8 @@
   transition: background 0.2s;
 
   .country-flag {
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     flex-shrink: 0;
     overflow: hidden;
@@ -282,8 +282,69 @@
   }
 }
 
+// Pricing Section Header
+.pricing-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 36px;
+}
+
+.pricing-section-header .section-title {
+  margin-bottom: 0;
+}
+
+.pricing-arrows {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.pricing-arrows-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.pricing-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.145);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing-section-header {
+    margin-bottom: 36px;
+  }
+}
+
 // Pricing Cards
 .pricing-wrapper {
+  display: flex;
+  gap: var(--columnGap);
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
@@ -301,71 +362,8 @@
   }
 }
 
-@media (max-width: 1599px) {
-  .pricing-wrapper {
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 1199px) {
-  .pricing-wrapper {
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 991px) {
-  .pricing-wrapper {
-    padding-right: 0;
-  }
-}
-
 .pricing-grid {
-  display: flex;
-  gap: var(--columnGap);
-  padding-left: $grid-padding-1600;
-  padding-right: 0;
-  width: fit-content;
-
-  &::after {
-    content: '';
-    display: block;
-    min-width: $grid-padding-1600;
-    margin-left: calc(var(--columnGap) * -1);
-    flex-shrink: 0;
-  }
-}
-
-@media (max-width: 1599px) {
-  .pricing-grid {
-    padding-left: $grid-padding-1200;
-    padding-right: 0;
-
-    &::after {
-      min-width: $grid-padding-1200;
-    }
-  }
-}
-
-@media (max-width: 1199px) {
-  .pricing-grid {
-    padding-left: $grid-padding-992;
-    padding-right: 0;
-
-    &::after {
-      min-width: $grid-padding-992;
-    }
-  }
-}
-
-@media (max-width: 991px) {
-  .pricing-grid {
-    padding-left: $grid-padding-768;
-    padding-right: 0;
-
-    &::after {
-      min-width: $grid-padding-768;
-    }
-  }
+  display: contents;
 }
 
 @media (max-width: 767px) {
@@ -375,22 +373,10 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-padding-left: 16px;
+    gap: 16px;
 
     &::-webkit-scrollbar {
       display: none;
-    }
-  }
-
-  .pricing-grid {
-    display: flex;
-    gap: 16px;
-    padding-left: 16px;
-    padding-right: 0;
-    width: auto;
-
-    &::after {
-      min-width: 16px;
-      margin-left: -16px;
     }
   }
 
@@ -401,6 +387,7 @@
 
 .pricing-card {
   flex: 0 0 calc((100% - var(--columnGap) * 3) / 4);
+  width: calc((100% - var(--columnGap) * 3) / 4);
   background: $white-alpha-145;
   border-radius: 24px;
   padding: 24px;
@@ -412,6 +399,8 @@
   scroll-snap-align: start;
 
   .pricing-header {
+    display: flex;
+    flex-direction: column;
   }
 
   .pricing-title {
@@ -642,13 +631,22 @@
   }
 
   .cta-title {
-    font-size: 21px;
-    line-height: 24px;
-    letter-spacing: -0.42px;
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  .cta-text {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.32px;
   }
 
   .cta-list {
     margin-left: 16px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.32px;
   }
 }
 
@@ -810,6 +808,7 @@
 
   .steps-wrapper {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .steps-image {
@@ -834,7 +833,7 @@
 
     .step-description {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.32px;
     }
   }
@@ -883,7 +882,7 @@
 
     .accordion-content {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.32px;
     }
   }
@@ -897,13 +896,13 @@
 
     .support-description {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.32px;
     }
 
     .link-pink {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 22px;
       letter-spacing: -0.32px;
     }
   }

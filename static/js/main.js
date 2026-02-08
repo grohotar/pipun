@@ -215,6 +215,71 @@ document.addEventListener('DOMContentLoaded', function() {
         e.stopPropagation();
       }
     }, true);
+
+    // Arrow buttons for pricing slider
+    const prevButton = document.querySelector('.pricing-arrow-prev');
+    const nextButton = document.querySelector('.pricing-arrow-next');
+
+    if (prevButton && nextButton) {
+      // Calculate card width including gap dynamically
+      const firstCard = pricingWrapper.querySelector('.pricing-card');
+      let scrollAmount = 300;
+      
+      if (firstCard) {
+        const secondCard = pricingWrapper.querySelectorAll('.pricing-card')[1];
+        if (secondCard) {
+          // Distance from first card to second card = card width + gap
+          scrollAmount = secondCard.offsetLeft - firstCard.offsetLeft;
+        } else {
+          scrollAmount = firstCard.offsetWidth;
+        }
+        
+      }
+
+      // Function to update button states
+      function updateButtonStates() {
+        const maxScroll = pricingWrapper.scrollWidth - pricingWrapper.offsetWidth;
+        
+        // Previous button disabled when at start (keep left padding visible)
+        prevButton.disabled = pricingWrapper.scrollLeft <= 1;
+        
+        // Next button disabled when can't scroll further
+        // The CSS ::after element already provides right padding
+        const canScrollRight = pricingWrapper.scrollLeft < maxScroll - 1;
+        nextButton.disabled = !canScrollRight;
+      }
+
+      prevButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetScroll = Math.max(0, pricingWrapper.scrollLeft - scrollAmount);
+        pricingWrapper.scrollTo({
+          left: targetScroll,
+          behavior: 'smooth'
+        });
+      });
+
+      nextButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const maxScroll = pricingWrapper.scrollWidth - pricingWrapper.offsetWidth;
+        // Scroll to maxScroll - the ::after CSS element already provides right padding
+        const targetScroll = Math.min(maxScroll, pricingWrapper.scrollLeft + scrollAmount);
+        pricingWrapper.scrollTo({
+          left: targetScroll,
+          behavior: 'smooth'
+        });
+      });
+
+      // Update button states on scroll
+      pricingWrapper.addEventListener('scroll', updateButtonStates);
+
+      // Initial button state
+      updateButtonStates();
+      
+      // Update on window resize
+      window.addEventListener('resize', updateButtonStates);
+    }
   }
 
   // Initialize 3D Flag Coin

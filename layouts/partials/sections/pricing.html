@@ -1,9 +1,9 @@
 <section id="pricing" class="section pricing-section">
-  <div class="container">
+  <div class="container pricing-section-header">
     <h2 class="section-title">Много вариантов подписок</h2>
   </div>
 
-  <div class="pricing-wrapper">
+  <div class="pricing-wrapper container">
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="pricing-header">
@@ -55,6 +55,21 @@
       {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
       <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;2689₽</a>
       </div>
+    </div>
+  </div>
+
+  <div class="container pricing-arrows-row">
+    <div class="pricing-arrows">
+      <button class="pricing-arrow pricing-arrow-prev" aria-label="Предыдущий слайд">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="pricing-arrow pricing-arrow-next" aria-label="Следующий слайд">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
