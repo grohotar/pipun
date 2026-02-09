@@ -94,9 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrapper = item.querySelector('.accordion-content-wrapper');
     if (!wrapper || !item.classList.contains('active')) return;
     wrapper.style.height = `${wrapper.scrollHeight}px`;
-    // Force reflow to ensure the height transition runs
-    void wrapper.offsetHeight;
-    wrapper.style.height = '0px';
+    requestAnimationFrame(() => {
+      wrapper.style.height = '0px';
+    });
     item.classList.remove('active');
   }
 
@@ -104,7 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrapper = item.querySelector('.accordion-content-wrapper');
     if (!wrapper) return;
     item.classList.add('active');
-    wrapper.style.height = `${wrapper.scrollHeight}px`;
+    wrapper.style.height = '0px';
+    const targetHeight = wrapper.scrollHeight;
+    requestAnimationFrame(() => {
+      wrapper.style.height = `${targetHeight}px`;
+    });
 
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
