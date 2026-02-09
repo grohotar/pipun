@@ -90,20 +90,45 @@ function setupRenderLoop(renderer, container, renderFrame, { allowAnimation } = 
 document.addEventListener('DOMContentLoaded', function() {
   const accordionItems = document.querySelectorAll('.accordion-item');
 
-  function removeActiveClasses() {
-    accordionItems.forEach((item) => {
-      item.classList.remove('active');
-    });
+  function closeItem(item) {
+    const wrapper = item.querySelector('.accordion-content-wrapper');
+    if (!wrapper || !item.classList.contains('active')) return;
+    wrapper.style.height = `${wrapper.scrollHeight}px`;
+    // Force reflow to ensure the height transition runs
+    void wrapper.offsetHeight;
+    wrapper.style.height = '0px';
+    item.classList.remove('active');
+  }
+
+  function openItem(item) {
+    const wrapper = item.querySelector('.accordion-content-wrapper');
+    if (!wrapper) return;
+    item.classList.add('active');
+    wrapper.style.height = `${wrapper.scrollHeight}px`;
+
+    const onEnd = (e) => {
+      if (e.propertyName !== 'height') return;
+      if (item.classList.contains('active')) {
+        wrapper.style.height = 'auto';
+      }
+      wrapper.removeEventListener('transitionend', onEnd);
+    };
+
+    wrapper.addEventListener('transitionend', onEnd);
   }
 
   accordionItems.forEach((item) => {
     item.addEventListener('click', () => {
       if (item.classList.contains('active')) {
-        removeActiveClasses();
-      } else {
-        removeActiveClasses();
-        item.classList.add('active');
+        closeItem(item);
+        return;
       }
+
+      accordionItems.forEach((other) => {
+        if (other !== item) closeItem(other);
+      });
+
+      openItem(item);
     });
   });
 
