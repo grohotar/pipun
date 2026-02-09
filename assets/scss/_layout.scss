@@ -64,6 +64,7 @@
     left: 50%;
     transform: translateX(-50%);
     background: $white-alpha-14;
+    backdrop-filter: blur(20px);
     border-radius: 60px;
     height: 39px;
     display: flex;

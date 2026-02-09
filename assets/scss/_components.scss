@@ -321,7 +321,6 @@
   
   &:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
   }
   
   &:active {
@@ -333,6 +332,14 @@
     cursor: not-allowed;
     pointer-events: none;
   }
+}
+
+.pricing-arrow-prev svg {
+  transform: translateX(-1px);
+}
+
+.pricing-arrow-next svg {
+  transform: translateX(1px);
 }
 
 @media (max-width: 767px) {
