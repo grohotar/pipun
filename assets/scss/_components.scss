@@ -291,7 +291,14 @@
 .pricing-arrows-row {
   display: flex;
   justify-content: flex-end;
-  margin-top: 16px;
+  margin-top: 0;
+  height: 0;
+  overflow: visible;
+}
+
+.pricing-arrows-row .pricing-arrows {
+  position: relative;
+  top: 16px;
 }
 
 .pricing-arrow {
