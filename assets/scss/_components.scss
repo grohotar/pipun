@@ -227,7 +227,7 @@
 }
 
 .steps-grid {
-  grid-column: 7 / span 6;
+  grid-column: 7 / span 5;
   display: flex;
   flex-direction: column;
   gap: 48px;
@@ -267,6 +267,8 @@
     .section-title {
       margin-bottom: 36px;
     }
+
+    overflow-x: hidden;
   }
 }
 
@@ -815,6 +817,10 @@
   .steps-image {
     grid-column: span 1;
     order: 2;
+
+    &::before {
+      content: none;
+    }
   }
 
   .steps-grid {
