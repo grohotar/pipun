@@ -384,7 +384,7 @@
     (100vw - (var(--containerWidth) + 2 * var(--outsideGap))) / 2 + var(--outsideGap)
   );
   padding-left: var(--pricing-inset);
-  padding-right: var(--pricing-inset);
+  padding-right: 0;
   box-sizing: border-box;
   
   &::-webkit-scrollbar {
@@ -401,6 +401,8 @@
   display: flex;
   gap: var(--columnGap);
   width: max-content;
+  padding-right: var(--pricing-inset);
+  box-sizing: content-box;
 }
 
 @media (max-width: 767px) {
@@ -417,7 +419,7 @@
     scroll-padding-left: 16px;
     width: 100%;
     padding-left: 16px;
-    padding-right: 16px;
+    padding-right: 0;
 
     &::-webkit-scrollbar {
       display: none;
@@ -426,6 +428,10 @@
 
   .pricing-card:last-child {
     margin-right: 0;
+  }
+
+  .pricing-grid {
+    padding-right: 16px;
   }
 }
 
