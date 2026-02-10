@@ -258,25 +258,36 @@
 // Steps section specific spacing
 .section.steps-section {
   .section-title {
-    margin-bottom: 0;
+    margin-bottom: 36px;
   }
 
-  .section-description {
-    max-width: var(--col-5);
-    margin-top: 24px;
-    margin-bottom: 36px;
+  &.has-description {
+    .section-title {
+      margin-bottom: 0;
+    }
+
+    .section-description {
+      max-width: var(--col-5);
+      margin-top: 24px;
+      margin-bottom: 36px;
+    }
   }
 }
 
 @media (max-width: 767px) {
   .section.steps-section {
     .section-title {
-      margin-bottom: 24px;
+      margin-bottom: 36px;
     }
 
-    .section-description {
-      margin-top: 0;
-      max-width: 100%;
+    &.has-description {
+      .section-title {
+        margin-bottom: 0;
+      }
+
+      .section-description {
+        max-width: 100%;
+      }
     }
   }
 }

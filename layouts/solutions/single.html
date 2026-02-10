@@ -27,7 +27,8 @@
   {{ partial "sections/devices.html" (dict "title" (.Params.devicesTitle | default "Одна подписка для всех задач") "page" .) }}
 
   {{ if .Params.setupSteps }}
-  <section id="steps" class="section steps-section why-turkey-section">
+  {{ $hasDesc := .Params.setupDescription }}
+  <section id="steps" class="section steps-section why-turkey-section{{ if $hasDesc }} has-description{{ end }}">
     <div class="container">
       <h2 class="section-title">{{ .Params.setupTitle | default "Подключение" }}</h2>
       {{ with .Params.setupDescription }}
