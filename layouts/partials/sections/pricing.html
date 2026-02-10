@@ -3,8 +3,9 @@
     <h2 class="section-title">Много вариантов подписок</h2>
   </div>
 
-  <div class="pricing-wrapper container">
-    <div class="pricing-grid">
+  <div class="pricing-bleed">
+    <div class="pricing-wrapper">
+      <div class="pricing-grid">
       <div class="pricing-card">
         <div class="pricing-header">
           <h3 class="pricing-title">1 неделя</h3>
@@ -54,6 +55,7 @@
       {{ $start = "12month" }}
       {{ if $suffix }}{{ $start = printf "%s-%s" $start $suffix }}{{ end }}
       <a href="https://t.me/pipun_bot?start={{ $start }}" target="_blank" rel="noopener noreferrer" class="button pricing-button">Купить за&nbsp;2689₽</a>
+      </div>
       </div>
     </div>
   </div>

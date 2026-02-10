@@ -27,11 +27,11 @@
   {{ partial "sections/devices.html" (dict "title" (.Params.devicesTitle | default "Одна подписка для всех задач") "page" .) }}
 
   {{ if .Params.setupSteps }}
-  <section id="steps" class="section why-turkey-section">
+  <section id="steps" class="section steps-section why-turkey-section">
     <div class="container">
       <h2 class="section-title">{{ .Params.setupTitle | default "Подключение" }}</h2>
       {{ with .Params.setupDescription }}
-      <p style="max-width: 672px; margin-bottom: 36px;">{{ . }}</p>
+      <p class="section-description">{{ . }}</p>
       {{ end }}
 
       <div class="features-grid">

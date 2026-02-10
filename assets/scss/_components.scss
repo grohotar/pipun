@@ -148,9 +148,9 @@
 
   .device-name {
     font-weight: 500;
-    font-size: 30px;
-    line-height: 32px;
-    letter-spacing: -0.6px;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.48px;
     text-align: center;
     transition: color 0.2s;
     display: flex;
@@ -162,7 +162,7 @@
       content: '';
       display: inline-block;
       width: 9px;
-      height: 16px;
+      height: 13px;
       background-color: white;
       mask-image: url('/images/arrow.svg');
       mask-size: contain;
@@ -258,17 +258,26 @@
 // Steps section specific spacing
 .section.steps-section {
   .section-title {
-    margin-bottom: 60px;
+    margin-bottom: 0;
+  }
+
+  .section-description {
+    max-width: var(--col-5);
+    margin-top: 24px;
+    margin-bottom: 36px;
   }
 }
 
 @media (max-width: 767px) {
   .section.steps-section {
     .section-title {
-      margin-bottom: 36px;
+      margin-bottom: 24px;
     }
 
-    overflow-x: hidden;
+    .section-description {
+      margin-top: 0;
+      max-width: 100%;
+    }
   }
 }
 
@@ -346,15 +355,26 @@
 }
 
 // Pricing Cards
+.pricing-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
 .pricing-wrapper {
-  display: flex;
-  gap: var(--columnGap);
+  display: block;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   cursor: grab;
   -webkit-overflow-scrolling: touch;
+  width: 100%;
+  --pricing-inset: calc(
+    (100vw - (var(--containerWidth) + 2 * var(--outsideGap))) / 2 + var(--outsideGap)
+  );
+  padding-left: var(--pricing-inset);
+  padding-right: var(--pricing-inset);
+  box-sizing: border-box;
   
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -367,17 +387,26 @@
 }
 
 .pricing-grid {
-  display: contents;
+  display: flex;
+  gap: var(--columnGap);
+  width: max-content;
 }
 
 @media (max-width: 767px) {
+  .pricing-bleed {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .pricing-wrapper {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-padding-left: 16px;
-    gap: 16px;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -390,8 +419,8 @@
 }
 
 .pricing-card {
-  flex: 0 0 calc((100% - var(--columnGap) * 3) / 4);
-  width: calc((100% - var(--columnGap) * 3) / 4);
+  flex: 0 0 var(--col-3);
+  width: var(--col-3);
   background: $white-alpha-145;
   border-radius: 24px;
   padding: 24px;
@@ -656,11 +685,12 @@
 // Article Cards
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--columnGap);
 }
 
 .article-card {
+  grid-column: span 3;
   display: block;
   text-decoration: none;
   color: inherit;
@@ -691,10 +721,9 @@
 
   .article-title {
     font-weight: 500;
-    font-size: 30px;
-    line-height: 32px;
-    letter-spacing: -0.6px;
-    text-align: center;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.48px;
     transition: color 0.2s;
     display: flex;
     align-items: baseline;
@@ -705,7 +734,7 @@
       content: '';
       display: inline-block;
       width: 9px;
-      height: 16px;
+      height: 13px;
       background-color: white;
       mask-image: url('/images/arrow.svg');
       mask-size: contain;
@@ -797,14 +826,14 @@
 
   .device-card {
     .device-name {
-      font-size: 21px;
-      line-height: 24px;
-      letter-spacing: -0.42px;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.36px;
       gap: 4px;
 
       &::after {
         width: 9px;
-        height: 12px;
+        height: 10px;
       }
     }
   }
@@ -926,9 +955,13 @@
     }
 
     .article-title {
-      font-size: 21px;
-      line-height: 24px;
-      letter-spacing: -0.42px;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.36px;
+
+      &::after {
+        height: 10px;
+      }
     }
   }
 }
