@@ -1,0 +1,14 @@
+{
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.139.3"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1",
+      "permanent": false
+    }
+  ]
+}
