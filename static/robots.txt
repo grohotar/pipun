@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://pipun.pro/sitemap.xml
+Sitemap: https://pipun.club/sitemap.xml
 
 # Yandex
 User-agent: Yandex
